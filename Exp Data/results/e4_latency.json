@@ -1,0 +1,29 @@
+{
+ "experiment": "e4_latency",
+ "generated": "2026-10-11 06:13:00",
+ "sign_vector_8_ms": 0.5151403140000639,
+ "verify_vector_8_ms": 0.40082216499990864,
+ "sign_vector_100_ms": 0.48401982699988366,
+ "verify_vector_100_ms": 0.39747829600014484,
+ "sign_single_ms": 0.42905547799989563,
+ "verify_single_ms": 0.40537130899997464,
+ "ema_update_ms": 0.00010122905999992327,
+ "sha256_29B_ms": 0.0007890683999994507,
+ "merkle_1000_ms": 2.0328588999973363,
+ "engine_per_node_votes_8_ms": 16.214852359998986,
+ "engine_batched_8_ms": 2.004110824999543,
+ "replica_per_node_sign_8_ms": 3.432443823999165,
+ "replica_batched_sign_8_ms": 0.5151403140000639,
+ "engine_per_node_votes_100_ms": 202.68565449998732,
+ "engine_batched_100_ms": 1.9873914800007242,
+ "replica_per_node_sign_100_ms": 42.90554779998956,
+ "replica_batched_sign_100_ms": 0.48401982699988366,
+ "platform": {
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+  "vcpus": 2,
+  "python": "3.13.16",
+  "cryptography": "50.0.1",
+  "numpy": "2.5.3",
+  "single_thread": true
+ }
+}

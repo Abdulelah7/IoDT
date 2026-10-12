@@ -1,0 +1,3210 @@
+{
+ "experiment": "e7_trace",
+ "generated": "2026-10-12 20:28:38",
+ "intel": {
+  "dataset": "Intel Berkeley Research Lab, 54 motes, 28 Feb - 5 Apr 2004",
+  "n_legit": 30,
+  "n_attack": 2,
+  "stats": [
+   {
+    "dataset": "intel",
+    "r": 4,
+    "q": 0.15195374664342226,
+    "p_ge2": 0.16211083638131482,
+    "p_ge2_indep": 0.11207025835404083,
+    "p_all4": 0.045558302853518376,
+    "p_fail_given_prev": 0.5107928169661697,
+    "q_mote_p10": 0.053347269447946086,
+    "q_mote_p50": 0.14770877120301465,
+    "q_mote_p90": 0.2518102376644636,
+    "usable_node_rounds": 263289
+   },
+   {
+    "dataset": "intel",
+    "r": 8,
+    "q": 0.07938947288238879,
+    "p_ge2": 0.08247257769652651,
+    "p_ge2_indep": 0.03393236518920614,
+    "p_all4": 0.028656307129798903,
+    "p_fail_given_prev": 0.5415603043784796,
+    "q_mote_p10": 0.018578395703395707,
+    "q_mote_p50": 0.05625408461496727,
+    "q_mote_p90": 0.19270086542256862,
+    "usable_node_rounds": 131280
+   },
+   {
+    "dataset": "intel",
+    "r": 16,
+    "q": 0.044114947452156224,
+    "p_ge2": 0.046749988526671664,
+    "p_ge2_indep": 0.01100130689828313,
+    "p_all4": 0.018525600819960533,
+    "p_fail_given_prev": 0.5944602272727273,
+    "q_mote_p10": 0.004091238233164374,
+    "q_mote_p50": 0.01919778746990141,
+    "q_mote_p90": 0.14298913043478262,
+    "usable_node_rounds": 65369
+   }
+  ],
+  "window_stats": {
+   "4": {
+    "q": 0.15506510416666666,
+    "p_ge2": 0.16635208333333334,
+    "p_ge2_indep": 0.11617707733501109,
+    "ratio_ge2": 1.4318838720106237,
+    "p_all4": 0.045477083333333335,
+    "p_fail_given_prev": 0.5086839499730135,
+    "node_q_p50": 0.046875,
+    "node_q_p90": 0.5
+   },
+   "8": {
+    "q": 0.0788765625,
+    "p_ge2": 0.08153958333333333,
+    "p_ge2_indep": 0.03351934239831325,
+    "ratio_ge2": 2.432612858700848,
+    "p_all4": 0.026225,
+    "p_fail_given_prev": 0.518360508011602,
+    "node_q_p50": 0.0,
+    "node_q_p90": 0.25
+   },
+   "16": {
+    "q": 0.03811770833333333,
+    "p_ge2": 0.03961666666666667,
+    "p_ge2_indep": 0.008281023458043602,
+    "ratio_ge2": 4.7840302430475345,
+    "p_all4": 0.01560625,
+    "p_fail_given_prev": 0.5769495094240302,
+    "node_q_p50": 0.0,
+    "node_q_p90": 0.0625
+   }
+  },
+  "paired": {
+   "4": {
+    "and": [
+     0.3582816416255763,
+     0.3916153422640158
+    ],
+    "and_db": [
+     0.1410229440373666,
+     0.1572641953403316
+    ],
+    "kof4_p": [
+     0.10407260523060162,
+     0.1166839059957123
+    ]
+   },
+   "8": {
+    "and": [
+     0.24963319653073254,
+     0.2842982784884802
+    ],
+    "and_db": [
+     0.07389224136067485,
+     0.09717545155993434
+    ],
+    "kof4_p": [
+     0.05847742734484857,
+     0.07752050547333793
+    ]
+   },
+   "16": {
+    "and": [
+     0.11249959150326798,
+     0.17091357620989453
+    ],
+    "and_db": [
+     0.02889053164124189,
+     0.05587029046110192
+    ],
+    "kof4_p": [
+     0.026198957837537687,
+     0.04667597916030383
+    ]
+   }
+  },
+  "paired_silence_off": {
+   "4": {
+    "and": [
+     0.3501190691684145,
+     0.38356328901423586
+    ],
+    "and_db": [
+     0.1398967577168182,
+     0.1555113986308022
+    ],
+    "kof4_p": [
+     0.09762535100403534,
+     0.10984199355971898
+    ]
+   },
+   "8": {
+    "and": [
+     0.2431791833070789,
+     0.2772256975595
+    ],
+    "and_db": [
+     0.07479283815777393,
+     0.09728917893878473
+    ],
+    "kof4_p": [
+     0.05329712747167834,
+     0.07175130581700007
+    ]
+   },
+   "16": {
+    "and": [
+     0.10713645176544769,
+     0.16499602915489836
+    ],
+    "and_db": [
+     0.026632258149385676,
+     0.05230576715177261
+    ],
+    "kof4_p": [
+     0.02252144833140737,
+     0.04215790971583695
+    ]
+   }
+  },
+  "rows": [
+   {
+    "r": 4,
+    "agg": "and",
+    "q": 0.15506510416666666,
+    "det1": 0.99,
+    "det1_ci": [
+     0.981690334694608,
+     0.9945593046907295
+    ],
+    "ttd1_rounds": 1.2313131313131314,
+    "tpr1_steady": 0.9822142857142857,
+    "det2": 0.992,
+    "det2_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd2_rounds": 1.1764112903225807,
+    "tpr2_steady": 0.9862142857142857,
+    "fpr": 0.30145,
+    "fpr_ci": [
+     0.28851630208333334,
+     0.3145754166666667
+    ],
+    "false_iso": 0.687,
+    "false_iso_ci": [
+     0.6817289165351639,
+     0.6922231976501076
+    ],
+    "false_iso_count": 20610,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.6647733843850362,
+     0.7088557476760448
+    ],
+    "clusters": 309,
+    "false_iso_typical": 0.60998274259923,
+    "false_iso_lossy": 0.7566980448950036,
+    "share_typical": 0.5022,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.992,
+    "ttdW1": 1.1975806451612903,
+    "detW2": 0.993
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "q": 0.15506510416666666,
+    "det1": 0.978,
+    "det1_ci": [
+     0.9669140836251823,
+     0.9854274013262284
+    ],
+    "ttd1_rounds": 2.2822085889570554,
+    "tpr1_steady": 0.9654285714285714,
+    "det2": 0.989,
+    "det2_ci": [
+     0.9804104032716243,
+     0.9938468899108859
+    ],
+    "ttd2_rounds": 2.2335692618806875,
+    "tpr2_steady": 0.9795,
+    "fpr": 0.18342708333333335,
+    "fpr_ci": [
+     0.17218942708333335,
+     0.1948583854166667
+    ],
+    "false_iso": 0.46066666666666667,
+    "false_iso_ci": [
+     0.45503156338744555,
+     0.4663118421849928
+    ],
+    "false_iso_count": 13820,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.4296655972174569,
+     0.4929247223314571
+    ],
+    "clusters": 309,
+    "false_iso_typical": 0.3674498871631488,
+    "false_iso_lossy": 0.5989862418537292,
+    "share_typical": 0.5022,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.983,
+    "ttdW1": 2.2115971515768056,
+    "detW2": 0.989
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "q": 0.15506510416666666,
+    "det1": 0.99,
+    "det1_ci": [
+     0.981690334694608,
+     0.9945593046907295
+    ],
+    "ttd1_rounds": 1.2313131313131314,
+    "tpr1_steady": 0.9822142857142857,
+    "det2": 0.992,
+    "det2_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd2_rounds": 1.1764112903225807,
+    "tpr2_steady": 0.9862142857142857,
+    "fpr": 0.18741666666666668,
+    "fpr_ci": [
+     0.17525625,
+     0.19978890624999998
+    ],
+    "false_iso": 0.4219,
+    "false_iso_ci": [
+     0.41632176570156526,
+     0.4274982336681154
+    ],
+    "false_iso_count": 12657,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.38923387702374135,
+     0.4550122818301315
+    ],
+    "clusters": 309,
+    "false_iso_typical": 0.3226470197796363,
+    "false_iso_lossy": 0.5794351918899349,
+    "share_typical": 0.5022,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.992,
+    "ttdW1": 3.1370967741935485,
+    "detW2": 0.993
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "q": 0.15506510416666666,
+    "det1": 0.986,
+    "det1_ci": [
+     0.9766377520234698,
+     0.9916425025505587
+    ],
+    "ttd1_rounds": 2.150101419878296,
+    "tpr1_steady": 0.9749285714285715,
+    "det2": 0.99,
+    "det2_ci": [
+     0.981690334694608,
+     0.9945593046907295
+    ],
+    "ttd2_rounds": 2.1121212121212123,
+    "tpr2_steady": 0.9825714285714285,
+    "fpr": 0.15265208333333333,
+    "fpr_ci": [
+     0.14172682291666666,
+     0.16381895833333335
+    ],
+    "false_iso": 0.3118,
+    "false_iso_ci": [
+     0.30658245138437884,
+     0.3170657417190003
+    ],
+    "false_iso_count": 9354,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": 0.495214388572611,
+    "false_iso_ci_cluster": [
+     0.27904591542683366,
+     0.3459900249535304
+    ],
+    "clusters": 309,
+    "false_iso_typical": 0.2159166334793575,
+    "false_iso_lossy": 0.4440260680666184,
+    "share_typical": 0.5022,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.988,
+    "ttdW1": 3.7388663967611335,
+    "detW2": 0.99
+   },
+   {
+    "r": 8,
+    "agg": "and",
+    "q": 0.0788765625,
+    "det1": 0.995,
+    "det1_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd1_rounds": 1.1346733668341709,
+    "tpr1_steady": 0.9905,
+    "det2": 0.997,
+    "det2_ci": [
+     0.9912168282105721,
+     0.9989792345945557
+    ],
+    "ttd2_rounds": 1.143430290872618,
+    "tpr2_steady": 0.9909285714285714,
+    "fpr": 0.15139166666666665,
+    "fpr_ci": [
+     0.14096479166666664,
+     0.16174604166666667
+    ],
+    "false_iso": 0.42006666666666664,
+    "false_iso_ci": [
+     0.41449198676747984,
+     0.42566181540430587
+    ],
+    "false_iso_count": 12602,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.3771547514861463,
+     0.4608494666199229
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.3380796864794252,
+    "false_iso_lossy": 0.46473388143660754,
+    "share_typical": 0.5103333333333333,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=8",
+     "silence_hold": true
+    },
+    "detW1": 0.996,
+    "ttdW1": 1.1034136546184738,
+    "detW2": 0.998
+   },
+   {
+    "r": 8,
+    "agg": "and_db",
+    "q": 0.0788765625,
+    "det1": 0.991,
+    "det1_ci": [
+     0.982983992177176,
+     0.9952579934109885
+    ],
+    "ttd1_rounds": 2.1937436932391523,
+    "tpr1_steady": 0.9819285714285715,
+    "det2": 0.991,
+    "det2_ci": [
+     0.982983992177176,
+     0.9952579934109885
+    ],
+    "ttd2_rounds": 2.1352169525731584,
+    "tpr2_steady": 0.9843571428571428,
+    "fpr": 0.08330208333333333,
+    "fpr_ci": [
+     0.07595765625,
+     0.0905940625
+    ],
+    "false_iso": 0.2391,
+    "false_iso_ci": [
+     0.2343069124940902,
+     0.24395989718004163
+    ],
+    "false_iso_count": 7173,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.1992077147766323,
+     0.27894182296808157
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.15094709340300458,
+    "false_iso_lossy": 0.3268426366652243,
+    "share_typical": 0.5103333333333333,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=8",
+     "silence_hold": true
+    },
+    "detW1": 0.992,
+    "ttdW1": 2.1350806451612905,
+    "detW2": 0.994
+   },
+   {
+    "r": 8,
+    "agg": "kof4_p",
+    "q": 0.0788765625,
+    "det1": 0.995,
+    "det1_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd1_rounds": 1.1346733668341709,
+    "tpr1_steady": 0.9905,
+    "det2": 0.997,
+    "det2_ci": [
+     0.9912168282105721,
+     0.9989792345945557
+    ],
+    "ttd2_rounds": 1.143430290872618,
+    "tpr2_steady": 0.9909285714285714,
+    "fpr": 0.08740625,
+    "fpr_ci": [
+     0.07960729166666666,
+     0.09482989583333332
+    ],
+    "false_iso": 0.2216,
+    "false_iso_ci": [
+     0.21693598566125,
+     0.22633530530570395
+    ],
+    "false_iso_count": 6648,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.18331609400428772,
+     0.26068939393939394
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.129523187459177,
+    "false_iso_lossy": 0.3281407759988461,
+    "share_typical": 0.5103333333333333,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=8",
+     "silence_hold": true
+    },
+    "detW1": 0.996,
+    "ttdW1": 3.5803212851405624,
+    "detW2": 0.998
+   },
+   {
+    "r": 8,
+    "agg": "ema_p",
+    "q": 0.0788765625,
+    "det1": 0.992,
+    "det1_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd1_rounds": 2.1088709677419355,
+    "tpr1_steady": 0.9852857142857143,
+    "det2": 0.994,
+    "det2_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd2_rounds": 2.1076458752515093,
+    "tpr2_steady": 0.9872142857142857,
+    "fpr": 0.06904166666666665,
+    "fpr_ci": [
+     0.06248421875,
+     0.07542755208333332
+    ],
+    "false_iso": 0.1537,
+    "false_iso_ci": [
+     0.14966309693292595,
+     0.1578255814501781
+    ],
+    "false_iso_count": 4611,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": 0.5994108007225104,
+    "false_iso_ci_cluster": [
+     0.12152491572031802,
+     0.18588731865446279
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.06636185499673417,
+    "false_iso_lossy": 0.27275349776431557,
+    "share_typical": 0.5103333333333333,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=8",
+     "silence_hold": true
+    },
+    "detW1": 0.993,
+    "ttdW1": 3.8841893252769384,
+    "detW2": 0.997
+   },
+   {
+    "r": 16,
+    "agg": "and",
+    "q": 0.03811770833333333,
+    "det1": 0.996,
+    "det1_ci": [
+     0.9897602795701941,
+     0.9984434370321067
+    ],
+    "ttd1_rounds": 1.0612449799196788,
+    "tpr1_steady": 0.9940714285714286,
+    "det2": 0.996,
+    "det2_ci": [
+     0.9897602795701941,
+     0.9984434370321067
+    ],
+    "ttd2_rounds": 1.1004016064257027,
+    "tpr2_steady": 0.9922142857142857,
+    "fpr": 0.06687916666666668,
+    "fpr_ci": [
+     0.06089354166666666,
+     0.07298588541666667
+    ],
+    "false_iso": 0.20646666666666666,
+    "false_iso_ci": [
+     0.20192399305453407,
+     0.21108450649706995
+    ],
+    "false_iso_count": 6194,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.15816657020244757,
+     0.25726792203501814
+    ],
+    "clusters": 73,
+    "false_iso_typical": 0.11409439186143841,
+    "false_iso_lossy": 0.2892597968069666,
+    "share_typical": 0.5177,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=16",
+     "silence_hold": true
+    },
+    "detW1": 0.998,
+    "ttdW1": 1.0671342685370742,
+    "detW2": 0.998
+   },
+   {
+    "r": 16,
+    "agg": "and_db",
+    "q": 0.03811770833333333,
+    "det1": 0.992,
+    "det1_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd1_rounds": 2.0705645161290325,
+    "tpr1_steady": 0.9886428571428572,
+    "det2": 0.994,
+    "det2_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd2_rounds": 2.114688128772636,
+    "tpr2_steady": 0.9879285714285714,
+    "fpr": 0.03544166666666666,
+    "fpr_ci": [
+     0.03153098958333333,
+     0.03959208333333333
+    ],
+    "false_iso": 0.10723333333333333,
+    "false_iso_ci": [
+     0.10378218492783371,
+     0.11078505902135442
+    ],
+    "false_iso_count": 3217,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.07434709905506287,
+     0.14280255387683105
+    ],
+    "clusters": 73,
+    "false_iso_typical": 0.02594810379241517,
+    "false_iso_lossy": 0.23613933236574747,
+    "share_typical": 0.5177,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=16",
+     "silence_hold": true
+    },
+    "detW1": 0.996,
+    "ttdW1": 2.0983935742971886,
+    "detW2": 0.995
+   },
+   {
+    "r": 16,
+    "agg": "kof4_p",
+    "q": 0.03811770833333333,
+    "det1": 0.996,
+    "det1_ci": [
+     0.9897602795701941,
+     0.9984434370321067
+    ],
+    "ttd1_rounds": 1.0612449799196788,
+    "tpr1_steady": 0.9940714285714286,
+    "det2": 0.996,
+    "det2_ci": [
+     0.9897602795701941,
+     0.9984434370321067
+    ],
+    "ttd2_rounds": 1.1004016064257027,
+    "tpr2_steady": 0.9922142857142857,
+    "fpr": 0.040916666666666664,
+    "fpr_ci": [
+     0.036466562499999994,
+     0.04549807291666667
+    ],
+    "false_iso": 0.10123333333333333,
+    "false_iso_ci": [
+     0.09787087789606051,
+     0.10469790249638093
+    ],
+    "false_iso_count": 3037,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.07109921370967742,
+     0.13381848504943442
+    ],
+    "clusters": 73,
+    "false_iso_typical": 0.02678513939862211,
+    "false_iso_lossy": 0.23178519593613933,
+    "share_typical": 0.5177,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=16",
+     "silence_hold": true
+    },
+    "detW1": 0.998,
+    "ttdW1": 3.8256513026052104,
+    "detW2": 0.997
+   },
+   {
+    "r": 16,
+    "agg": "ema_p",
+    "q": 0.03811770833333333,
+    "det1": 0.994,
+    "det1_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd1_rounds": 2.051307847082495,
+    "tpr1_steady": 0.9910714285714286,
+    "det2": 0.994,
+    "det2_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd2_rounds": 2.0835010060362174,
+    "tpr2_steady": 0.989,
+    "fpr": 0.031043750000000002,
+    "fpr_ci": [
+     0.02725661458333333,
+     0.03489072916666666
+    ],
+    "false_iso": 0.0653,
+    "false_iso_ci": [
+     0.062559598146473,
+     0.06815171716723001
+    ],
+    "false_iso_count": 1959,
+    "node_runs": 30000,
+    "zero_upper": 0.0001,
+    "tau_min_legit_mean": 0.6868925808739119,
+    "false_iso_ci_cluster": [
+     0.04187036884696477,
+     0.09138708103047262
+    ],
+    "clusters": 73,
+    "false_iso_typical": 0.009078616959629129,
+    "false_iso_lossy": 0.18287373004354138,
+    "share_typical": 0.5177,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 30,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "intel trace, r=16",
+     "silence_hold": true
+    },
+    "detW1": 0.996,
+    "ttdW1": 3.9738955823293174,
+    "detW2": 0.995
+   }
+  ],
+  "iid": [
+   {
+    "r": 4,
+    "agg": "and",
+    "q": 0.15506510416666666,
+    "fpr": 0.49001666666666666,
+    "false_iso": 0.9999666666666667,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "q": 0.15506510416666666,
+    "fpr": 0.22480937499999998,
+    "false_iso": 0.9546333333333333,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "q": 0.15506510416666666,
+    "fpr": 0.15984791666666667,
+    "false_iso": 0.8762333333333333,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "q": 0.15506510416666666,
+    "fpr": 0.08932708333333333,
+    "false_iso": 0.5214166666666666,
+    "ttd1_rounds": 1.8595
+   },
+   {
+    "r": 8,
+    "agg": "and",
+    "q": 0.0788765625,
+    "fpr": 0.27970416666666664,
+    "false_iso": 0.9949666666666667,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "and_db",
+    "q": 0.0788765625,
+    "fpr": 0.07290208333333334,
+    "false_iso": 0.6340333333333333,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 8,
+    "agg": "kof4_p",
+    "q": 0.0788765625,
+    "fpr": 0.03810104166666666,
+    "false_iso": 0.42845,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "ema_p",
+    "q": 0.0788765625,
+    "fpr": 0.0099,
+    "false_iso": 0.09605,
+    "ttd1_rounds": 1.925
+   },
+   {
+    "r": 16,
+    "agg": "and",
+    "q": 0.03811770833333333,
+    "fpr": 0.14328125,
+    "false_iso": 0.9169666666666667,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "and_db",
+    "q": 0.03811770833333333,
+    "fpr": 0.019186458333333333,
+    "false_iso": 0.24245,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 16,
+    "agg": "kof4_p",
+    "q": 0.03811770833333333,
+    "fpr": 0.0086125,
+    "false_iso": 0.12591666666666668,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "ema_p",
+    "q": 0.03811770833333333,
+    "fpr": 0.000840625,
+    "false_iso": 0.01025,
+    "ttd1_rounds": 1.9645
+   }
+  ],
+  "silence_off": [
+   {
+    "r": 4,
+    "agg": "and",
+    "fpr": 0.31821875,
+    "false_iso": 0.6940333333333333,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "fpr": 0.20711458333333335,
+    "false_iso": 0.4744333333333333,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "fpr": 0.21114375000000002,
+    "false_iso": 0.4303666666666667,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "fpr": 0.18452499999999997,
+    "false_iso": 0.3269,
+    "det1": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "and",
+    "fpr": 0.16122083333333334,
+    "false_iso": 0.42263333333333336,
+    "det1": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "and_db",
+    "fpr": 0.09882083333333333,
+    "false_iso": 0.24903333333333333,
+    "det1": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "kof4_p",
+    "fpr": 0.10181875,
+    "false_iso": 0.22556666666666667,
+    "det1": 1.0
+   },
+   {
+    "r": 8,
+    "agg": "ema_p",
+    "fpr": 0.088825,
+    "false_iso": 0.16316666666666665,
+    "det1": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "and",
+    "fpr": 0.07119375,
+    "false_iso": 0.20746666666666666,
+    "det1": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "and_db",
+    "fpr": 0.044352083333333334,
+    "false_iso": 0.11093333333333333,
+    "det1": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "kof4_p",
+    "fpr": 0.04789375,
+    "false_iso": 0.10403333333333334,
+    "det1": 1.0
+   },
+   {
+    "r": 16,
+    "agg": "ema_p",
+    "fpr": 0.04234375,
+    "false_iso": 0.0721,
+    "det1": 1.0
+   }
+  ],
+  "long": [
+   {
+    "r": 8,
+    "rounds": 128,
+    "agg": "and",
+    "false_iso_long": 0.6604444444444444,
+    "false_iso_16": 0.39766666666666667,
+    "unavailability": 0.30815711805555557,
+    "lies_per_round": 0.2833072916666667,
+    "lies_delivered_per_round": 0.014361979166666667,
+    "detected_runs": 1.0
+   },
+   {
+    "r": 8,
+    "rounds": 128,
+    "agg": "and_db",
+    "false_iso_long": 0.4318888888888889,
+    "false_iso_16": 0.23933333333333334,
+    "unavailability": 0.16481944444444444,
+    "lies_per_round": 0.2833072916666667,
+    "lies_delivered_per_round": 0.2715755208333333,
+    "detected_runs": 0.58
+   },
+   {
+    "r": 8,
+    "rounds": 128,
+    "agg": "kof4_p",
+    "false_iso_long": 0.4106666666666667,
+    "false_iso_16": 0.22266666666666668,
+    "unavailability": 0.14959375,
+    "lies_per_round": 0.2833072916666667,
+    "lies_delivered_per_round": 0.015807291666666667,
+    "detected_runs": 1.0
+   },
+   {
+    "r": 8,
+    "rounds": 128,
+    "agg": "ema_p",
+    "false_iso_long": 0.297,
+    "false_iso_16": 0.14644444444444443,
+    "unavailability": 0.13524913194444443,
+    "lies_per_round": 0.2833072916666667,
+    "lies_delivered_per_round": 0.2788541666666667,
+    "detected_runs": 0.6116666666666667
+   },
+   {
+    "r": 8,
+    "rounds": 128,
+    "agg": "ema_p_long",
+    "false_iso_long": 0.29744444444444446,
+    "false_iso_16": 0.14644444444444443,
+    "unavailability": 0.1432248263888889,
+    "lies_per_round": 0.17359375,
+    "lies_delivered_per_round": 0.17263020833333334,
+    "detected_runs": 0.6166666666666667
+   }
+  ],
+  "windows16": {
+   "4": 309,
+   "8": 152,
+   "16": 73
+  },
+  "windows_long": 14
+ },
+ "flocklab": {
+  "dataset": "FlockLab TelosB link tests, 24 sensors + 2 gateways, Aug 2019",
+  "n_legit": 20,
+  "n_attack": 2,
+  "stats": [
+   {
+    "dataset": "flocklab",
+    "r": 1,
+    "q": 0.05360153256704981,
+    "p_ge2": 0.0565795889933821,
+    "p_ge2_indep": 0.01603147936772384,
+    "p_all4": 0.0182793451758969,
+    "p_fail_given_prev": 0.4119750357560785,
+    "q_mote_p10": 0.002450381679389314,
+    "q_mote_p50": 0.02456106870229008,
+    "q_mote_p90": 0.153293893129771,
+    "usable_node_rounds": 143550
+   },
+   {
+    "dataset": "flocklab",
+    "r": 2,
+    "q": 0.031315308254963425,
+    "p_ge2": 0.024628468593985837,
+    "p_ge2_indep": 0.005641101712914737,
+    "p_all4": 0.015369209334726576,
+    "p_fail_given_prev": 0.5367749419953596,
+    "q_mote_p10": 0.0007554071246819341,
+    "q_mote_p50": 0.010814249363867684,
+    "q_mote_p90": 0.10345896946564884,
+    "usable_node_rounds": 68904
+   },
+   {
+    "dataset": "flocklab",
+    "r": 4,
+    "q": 0.018300824335307095,
+    "p_ge2": 0.018344363171949377,
+    "p_ge2_indep": 0.0019608230208961464,
+    "p_all4": 0.013700220596772322,
+    "p_fail_given_prev": 0.745324313569439,
+    "q_mote_p10": 0.0,
+    "q_mote_p50": 0.0038167938931297713,
+    "q_mote_p90": 0.03909033078880407,
+    "usable_node_rounds": 34452
+   }
+  ],
+  "window_stats": {
+   "1": {
+    "q": 0.054715625,
+    "p_ge2": 0.057553125,
+    "p_ge2_indep": 0.01667922528503432,
+    "ratio_ge2": 3.450587423364344,
+    "p_all4": 0.0189,
+    "p_fail_given_prev": 0.42034734133790735,
+    "node_q_p50": 0.0,
+    "node_q_p90": 0.125
+   },
+   "2": {
+    "q": 0.03191171875,
+    "p_ge2": 0.025128125,
+    "p_ge2_indep": 0.005853277539297222,
+    "ratio_ge2": 4.293000772865629,
+    "p_all4": 0.0157375,
+    "p_fail_given_prev": 0.5442631442631443,
+    "node_q_p50": 0.0,
+    "node_q_p90": 0.046875
+   },
+   "4": {
+    "q": 0.01877109375,
+    "p_ge2": 0.01905,
+    "p_ge2_indep": 0.0020615836695516837,
+    "ratio_ge2": 9.24046900514237,
+    "p_all4": 0.013875,
+    "p_fail_given_prev": 0.7592208136401785,
+    "node_q_p50": 0.0,
+    "node_q_p90": 0.0
+   }
+  },
+  "paired": {
+   "1": {
+    "and": [
+     0.3795658088791022,
+     0.4083078752903405
+    ],
+    "and_db": [
+     0.12452192128654209,
+     0.14437468093252787
+    ],
+    "kof4_p": [
+     0.2088006035982621,
+     0.2321284938693404
+    ]
+   },
+   "2": {
+    "and": [
+     0.3043576552124346,
+     0.339474640651473
+    ],
+    "and_db": [
+     0.04808706976640273,
+     0.0658268209011826
+    ],
+    "kof4_p": [
+     0.03293511103021478,
+     0.049489132948680487
+    ]
+   },
+   "4": {
+    "and": [
+     0.046066507529886655,
+     0.07515192583836157
+    ],
+    "and_db": [
+     0.0015647231789297305,
+     0.010930552213934993
+    ],
+    "kof4_p": [
+     0.006340635026445569,
+     0.015522297693579254
+    ]
+   }
+  },
+  "paired_silence_off": {
+   "1": {
+    "and": [
+     0.36588769256646025,
+     0.39437449331145163
+    ],
+    "and_db": [
+     0.11655093876817176,
+     0.1355007556987116
+    ],
+    "kof4_p": [
+     0.199584025948339,
+     0.22182035257558846
+    ]
+   },
+   "2": {
+    "and": [
+     0.2954560887512899,
+     0.3287004124775395
+    ],
+    "and_db": [
+     0.04447147947277318,
+     0.061304076158177095
+    ],
+    "kof4_p": [
+     0.02819767327295677,
+     0.04282228773939071
+    ]
+   },
+   "4": {
+    "and": [
+     0.039296221761551814,
+     0.0641524583663759
+    ],
+    "and_db": [
+     0.0025870003857452243,
+     0.009069302397052947
+    ],
+    "kof4_p": [
+     0.001764338235294115,
+     0.007503997892655994
+    ]
+   }
+  },
+  "rows": [
+   {
+    "r": 1,
+    "agg": "and",
+    "q": 0.054715625,
+    "det1": 0.995,
+    "det1_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd1_rounds": 1.065326633165829,
+    "tpr1_steady": 0.9924285714285714,
+    "det2": 0.992,
+    "det2_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd2_rounds": 1.0786290322580645,
+    "tpr2_steady": 0.9890714285714286,
+    "fpr": 0.10234375,
+    "fpr_ci": [
+     0.09947453125,
+     0.10510632812499998
+    ],
+    "false_iso": 0.4771,
+    "false_iso_ci": [
+     0.4701826864308436,
+     0.4840261091437026
+    ],
+    "false_iso_count": 9542,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.46134997749037543,
+     0.4923932002022245
+    ],
+    "clusters": 292,
+    "false_iso_typical": 0.17541270865996494,
+    "false_iso_lossy": 0.9133944153577661,
+    "share_typical": 0.54215,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=1",
+     "silence_hold": true
+    },
+    "detW1": 0.997,
+    "ttdW1": 1.0611835506519558,
+    "detW2": 0.992
+   },
+   {
+    "r": 1,
+    "agg": "and_db",
+    "q": 0.054715625,
+    "det1": 0.994,
+    "det1_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd1_rounds": 2.1036217303822937,
+    "tpr1_steady": 0.9892142857142857,
+    "det2": 0.99,
+    "det2_ci": [
+     0.981690334694608,
+     0.9945593046907295
+    ],
+    "ttd2_rounds": 2.096969696969697,
+    "tpr2_steady": 0.9859285714285714,
+    "fpr": 0.035434375000000004,
+    "fpr_ci": [
+     0.033771796874999996,
+     0.037112812499999995
+    ],
+    "false_iso": 0.2179,
+    "false_iso_ci": [
+     0.21223308775207578,
+     0.2236752629719172
+    ],
+    "false_iso_count": 4358,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.2050588702709062,
+     0.22981545138979648
+    ],
+    "clusters": 292,
+    "false_iso_typical": 0.03486120077469335,
+    "false_iso_lossy": 0.5475567190226877,
+    "share_typical": 0.54215,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=1",
+     "silence_hold": true
+    },
+    "detW1": 0.994,
+    "ttdW1": 2.078470824949698,
+    "detW2": 0.991
+   },
+   {
+    "r": 1,
+    "agg": "kof4_p",
+    "q": 0.054715625,
+    "det1": 0.995,
+    "det1_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd1_rounds": 1.065326633165829,
+    "tpr1_steady": 0.9924285714285714,
+    "det2": 0.992,
+    "det2_ci": [
+     0.9842934787948114,
+     0.9959408529961804
+    ],
+    "ttd2_rounds": 1.0786290322580645,
+    "tpr2_steady": 0.9890714285714286,
+    "fpr": 0.047971875,
+    "fpr_ci": [
+     0.04596234375,
+     0.049968984375
+    ],
+    "false_iso": 0.30385,
+    "false_iso_ci": [
+     0.2975140225450477,
+     0.3102613159679308
+    ],
+    "false_iso_count": 6077,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.2892580538249118,
+     0.31759389336180566
+    ],
+    "clusters": 292,
+    "false_iso_typical": 0.07331919210550586,
+    "false_iso_lossy": 0.6795375218150087,
+    "share_typical": 0.54215,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=1",
+     "silence_hold": true
+    },
+    "detW1": 0.996,
+    "ttdW1": 3.6636546184738954,
+    "detW2": 0.989
+   },
+   {
+    "r": 1,
+    "agg": "ema_p",
+    "q": 0.054715625,
+    "det1": 0.994,
+    "det1_ci": [
+     0.9869716557675544,
+     0.9972473684290918
+    ],
+    "ttd1_rounds": 2.0714285714285716,
+    "tpr1_steady": 0.9899285714285714,
+    "det2": 0.991,
+    "det2_ci": [
+     0.982983992177176,
+     0.9952579934109885
+    ],
+    "ttd2_rounds": 2.080726538849647,
+    "tpr2_steady": 0.9865714285714285,
+    "fpr": 0.020884375,
+    "fpr_ci": [
+     0.019399609374999998,
+     0.022375156249999997
+    ],
+    "false_iso": 0.08335,
+    "false_iso_ci": [
+     0.07959869259590986,
+     0.08726133692961889
+    ],
+    "false_iso_count": 1667,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": 0.6142607607371542,
+    "false_iso_ci_cluster": [
+     0.07474876497005987,
+     0.09208673542337678
+    ],
+    "clusters": 292,
+    "false_iso_typical": 0.006732454117864059,
+    "false_iso_lossy": 0.23800174520069808,
+    "share_typical": 0.54215,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=1",
+     "silence_hold": true
+    },
+    "detW1": 0.994,
+    "ttdW1": 3.9456740442655938,
+    "detW2": 0.989
+   },
+   {
+    "r": 2,
+    "agg": "and",
+    "q": 0.03191171875,
+    "det1": 0.999,
+    "det1_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd1_rounds": 1.082082082082082,
+    "tpr1_steady": 0.9948571428571429,
+    "det2": 0.995,
+    "det2_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd2_rounds": 1.1055276381909547,
+    "tpr2_steady": 0.9894285714285714,
+    "fpr": 0.056265625,
+    "fpr_ci": [
+     0.054261953125000005,
+     0.058221953125
+    ],
+    "false_iso": 0.3489,
+    "false_iso_ci": [
+     0.34232394061479066,
+     0.3555340948137643
+    ],
+    "false_iso_count": 6978,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.3298577912748171,
+     0.3690190614343157
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.09777695784521723,
+    "false_iso_lossy": 0.7516354121238552,
+    "share_typical": 0.54205,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=2",
+     "silence_hold": true
+    },
+    "detW1": 0.999,
+    "ttdW1": 1.0790790790790792,
+    "detW2": 0.996
+   },
+   {
+    "r": 2,
+    "agg": "and_db",
+    "q": 0.03191171875,
+    "det1": 0.998,
+    "det1_ci": [
+     0.9927370411104123,
+     0.9994513678975429
+    ],
+    "ttd1_rounds": 2.082164328657315,
+    "tpr1_steady": 0.9932857142857143,
+    "det2": 0.995,
+    "det2_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd2_rounds": 2.1085427135678394,
+    "tpr2_steady": 0.9885714285714285,
+    "fpr": 0.014446874999999998,
+    "fpr_ci": [
+     0.013399921874999998,
+     0.015453203124999999
+    ],
+    "false_iso": 0.08415,
+    "false_iso_ci": [
+     0.08038188689543316,
+     0.08807783536111582
+    ],
+    "false_iso_count": 1683,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.072662256333547,
+     0.09596593851646092
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.005442302370630016,
+    "false_iso_lossy": 0.24400348887919757,
+    "share_typical": 0.54205,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=2",
+     "silence_hold": true
+    },
+    "detW1": 0.998,
+    "ttdW1": 2.0781563126252505,
+    "detW2": 0.996
+   },
+   {
+    "r": 2,
+    "agg": "kof4_p",
+    "q": 0.03191171875,
+    "det1": 0.999,
+    "det1_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd1_rounds": 1.082082082082082,
+    "tpr1_steady": 0.9948571428571429,
+    "det2": 0.995,
+    "det2_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd2_rounds": 1.1055276381909547,
+    "tpr2_steady": 0.9894285714285714,
+    "fpr": 0.015209375,
+    "fpr_ci": [
+     0.01407171875,
+     0.016365625
+    ],
+    "false_iso": 0.0679,
+    "false_iso_ci": [
+     0.06449568834715955,
+     0.07147027531054112
+    ],
+    "false_iso_count": 1358,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.05741009885118888,
+     0.07981122136290673
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.0070104233926759525,
+    "false_iso_lossy": 0.19581334496293065,
+    "share_typical": 0.54205,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=2",
+     "silence_hold": true
+    },
+    "detW1": 0.999,
+    "ttdW1": 3.834834834834835,
+    "detW2": 0.996
+   },
+   {
+    "r": 2,
+    "agg": "ema_p",
+    "q": 0.03191171875,
+    "det1": 0.999,
+    "det1_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd1_rounds": 2.069069069069069,
+    "tpr1_steady": 0.9937857142857143,
+    "det2": 0.995,
+    "det2_ci": [
+     0.9883488743952387,
+     0.9978624960042348
+    ],
+    "ttd2_rounds": 2.0924623115577887,
+    "tpr2_steady": 0.9887142857142858,
+    "fpr": 0.009753125000000001,
+    "fpr_ci": [
+     0.008771796875000001,
+     0.010774999999999998
+    ],
+    "false_iso": 0.02725,
+    "false_iso_ci": [
+     0.025082733172044326,
+     0.029598843590691086
+    ],
+    "false_iso_count": 545,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": 0.6972984372039253,
+    "false_iso_ci_cluster": [
+     0.021757738542208194,
+     0.03353225657662089
+    ],
+    "clusters": 152,
+    "false_iso_typical": 0.0007379393044922055,
+    "false_iso_lossy": 0.07435673789795029,
+    "share_typical": 0.54205,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=2",
+     "silence_hold": true
+    },
+    "detW1": 0.999,
+    "ttdW1": 4.007007007007007,
+    "detW2": 0.996
+   },
+   {
+    "r": 4,
+    "agg": "and",
+    "q": 0.01877109375,
+    "det1": 1.0,
+    "det1_ci": [
+     0.9961731014136095,
+     1.0
+    ],
+    "ttd1_rounds": 1.087,
+    "tpr1_steady": 0.9959285714285714,
+    "det2": 0.999,
+    "det2_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd2_rounds": 1.053053053053053,
+    "tpr2_steady": 0.9966428571428572,
+    "fpr": 0.015490625,
+    "fpr_ci": [
+     0.014477968749999999,
+     0.016471874999999997
+    ],
+    "false_iso": 0.0803,
+    "false_iso_ci": [
+     0.07661373879123032,
+     0.08414746219728383
+    ],
+    "false_iso_count": 1606,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.06447458748327634,
+     0.09611660517865683
+    ],
+    "clusters": 76,
+    "false_iso_typical": 0.011072319201995013,
+    "false_iso_lossy": 0.17728168089297439,
+    "share_typical": 0.50125,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 1.0,
+    "ttdW1": 1.085,
+    "detW2": 0.999
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "q": 0.01877109375,
+    "det1": 0.999,
+    "det1_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd1_rounds": 2.085085085085085,
+    "tpr1_steady": 0.9941428571428571,
+    "det2": 0.998,
+    "det2_ci": [
+     0.9927370411104123,
+     0.9994513678975429
+    ],
+    "ttd2_rounds": 2.0521042084168335,
+    "tpr2_steady": 0.995,
+    "fpr": 0.006553125,
+    "fpr_ci": [
+     0.0058312500000000005,
+     0.007265625
+    ],
+    "false_iso": 0.02615,
+    "false_iso_ci": [
+     0.02402765715203215,
+     0.02845434210555045
+    ],
+    "false_iso_count": 523,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.019287941672819324,
+     0.03333375893769153
+    ],
+    "clusters": 76,
+    "false_iso_typical": 0.0014962593516209476,
+    "false_iso_lossy": 0.07003720726636026,
+    "share_typical": 0.50125,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "and_db",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.999,
+    "ttdW1": 2.081081081081081,
+    "detW2": 0.998
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "q": 0.01877109375,
+    "det1": 1.0,
+    "det1_ci": [
+     0.9961731014136095,
+     1.0
+    ],
+    "ttd1_rounds": 1.087,
+    "tpr1_steady": 0.9959285714285714,
+    "det2": 0.999,
+    "det2_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd2_rounds": 1.053053053053053,
+    "tpr2_steady": 0.9966428571428572,
+    "fpr": 0.009690625000000001,
+    "fpr_ci": [
+     0.008837421875,
+     0.010556249999999998
+    ],
+    "false_iso": 0.0307,
+    "false_iso_ci": [
+     0.028397878457846124,
+     0.03318237320741402
+    ],
+    "false_iso_count": 614,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": NaN,
+    "false_iso_ci_cluster": [
+     0.0229292095200422,
+     0.038812590693575455
+    ],
+    "clusters": 76,
+    "false_iso_typical": 0.0024937655860349127,
+    "false_iso_lossy": 0.07725979426570366,
+    "share_typical": 0.50125,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "kof4_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 1.0,
+    "ttdW1": 4.031,
+    "detW2": 0.996
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "q": 0.01877109375,
+    "det1": 0.999,
+    "det1_ci": [
+     0.9943572970398398,
+     0.9998234581709429
+    ],
+    "ttd1_rounds": 2.081081081081081,
+    "tpr1_steady": 0.9942142857142857,
+    "det2": 0.998,
+    "det2_ci": [
+     0.9927370411104123,
+     0.9994513678975429
+    ],
+    "ttd2_rounds": 2.0490981963927855,
+    "tpr2_steady": 0.9950714285714286,
+    "fpr": 0.006640625,
+    "fpr_ci": [
+     0.005880937499999999,
+     0.00742828125
+    ],
+    "false_iso": 0.02005,
+    "false_iso_ci": [
+     0.01819749679984996,
+     0.02208684538370342
+    ],
+    "false_iso_count": 401,
+    "node_runs": 20000,
+    "zero_upper": 0.00015,
+    "tau_min_legit_mean": 0.770994848925872,
+    "false_iso_ci_cluster": [
+     0.013915952009202929,
+     0.027229430743153465
+    ],
+    "clusters": 76,
+    "false_iso_typical": 0.0014962593516209476,
+    "false_iso_lossy": 0.05712409717662508,
+    "share_typical": 0.50125,
+    "config": {
+     "runs": 1000,
+     "seed": 0,
+     "rounds": 16,
+     "n_legit": 20,
+     "n_attack": 2,
+     "n_fog": 2,
+     "q": 0.0,
+     "q_vec": null,
+     "q_corr": 0.0,
+     "corr_factors": 4,
+     "q_node": 0.0,
+     "markov": null,
+     "markov_scope": "network",
+     "pdr_ok": [
+      92.0,
+      100.0
+     ],
+     "pdr_bad": [
+      60.0,
+      89.0
+     ],
+     "profile": "TW",
+     "attacker": "bernoulli",
+     "p_lie": 1.0,
+     "period": 3,
+     "aware_margin": 0.02,
+     "agg": "ema_p",
+     "alpha": 0.5,
+     "theta": 0.7,
+     "sigma_theta": 0.0,
+     "persist_m": 4,
+     "persist_w": 8,
+     "persist2_m": 0,
+     "persist2_w": 32,
+     "debounce_r": 2,
+     "kof": 2,
+     "beta_lambda": 0.5,
+     "beta_theta": 0.38,
+     "n_rep": 1,
+     "k": null,
+     "c_corrupt": 0,
+     "frame_legit": false,
+     "withhold": false,
+     "eta": 0.0,
+     "rho": 0.0,
+     "p_miss": 0.0,
+     "miss_rule": "quorum",
+     "suppress": 0.0,
+     "readmit_theta": 0.9,
+     "readmit_r": 8,
+     "keep": false,
+     "fail_base": "flocklab trace, r=4",
+     "silence_hold": true
+    },
+    "detW1": 0.999,
+    "ttdW1": 4.061061061061061,
+    "detW2": 0.995
+   }
+  ],
+  "iid": [
+   {
+    "r": 1,
+    "agg": "and",
+    "q": 0.054715625,
+    "fpr": 0.2013390625,
+    "false_iso": 0.9722,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 1,
+    "agg": "and_db",
+    "q": 0.054715625,
+    "fpr": 0.038153125,
+    "false_iso": 0.415275,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 1,
+    "agg": "kof4_p",
+    "q": 0.054715625,
+    "fpr": 0.0179828125,
+    "false_iso": 0.2394,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 1,
+    "agg": "ema_p",
+    "q": 0.054715625,
+    "fpr": 0.002859375,
+    "false_iso": 0.031875,
+    "ttd1_rounds": 1.947
+   },
+   {
+    "r": 2,
+    "agg": "and",
+    "q": 0.03191171875,
+    "fpr": 0.121340625,
+    "false_iso": 0.87265,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "and_db",
+    "q": 0.03191171875,
+    "fpr": 0.013725,
+    "false_iso": 0.1808,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 2,
+    "agg": "kof4_p",
+    "q": 0.03191171875,
+    "fpr": 0.00611875,
+    "false_iso": 0.091575,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "ema_p",
+    "q": 0.03191171875,
+    "fpr": 0.0004625,
+    "false_iso": 0.006025,
+    "ttd1_rounds": 1.971
+   },
+   {
+    "r": 4,
+    "agg": "and",
+    "q": 0.01877109375,
+    "fpr": 0.07280156249999999,
+    "false_iso": 0.701125,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "q": 0.01877109375,
+    "fpr": 0.004950000000000001,
+    "false_iso": 0.071775,
+    "ttd1_rounds": 2.0
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "q": 0.01877109375,
+    "fpr": 0.0021046875000000002,
+    "false_iso": 0.0328,
+    "ttd1_rounds": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "q": 0.01877109375,
+    "fpr": 0.00011406250000000001,
+    "false_iso": 0.0016,
+    "ttd1_rounds": 1.9815
+   }
+  ],
+  "silence_off": [
+   {
+    "r": 1,
+    "agg": "and",
+    "fpr": 0.11546250000000001,
+    "false_iso": 0.48745,
+    "det1": 1.0
+   },
+   {
+    "r": 1,
+    "agg": "and_db",
+    "fpr": 0.04965,
+    "false_iso": 0.23355,
+    "det1": 1.0
+   },
+   {
+    "r": 1,
+    "agg": "kof4_p",
+    "fpr": 0.06435312500000001,
+    "false_iso": 0.31855,
+    "det1": 1.0
+   },
+   {
+    "r": 1,
+    "agg": "ema_p",
+    "fpr": 0.03918125000000001,
+    "false_iso": 0.10755,
+    "det1": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "and",
+    "fpr": 0.067821875,
+    "false_iso": 0.3598,
+    "det1": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "and_db",
+    "fpr": 0.026871875000000003,
+    "false_iso": 0.10105,
+    "det1": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "kof4_p",
+    "fpr": 0.0303125,
+    "false_iso": 0.08315,
+    "det1": 1.0
+   },
+   {
+    "r": 2,
+    "agg": "ema_p",
+    "fpr": 0.026265625,
+    "false_iso": 0.04815,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "and",
+    "fpr": 0.025671875,
+    "false_iso": 0.096,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "and_db",
+    "fpr": 0.017959374999999996,
+    "false_iso": 0.0497,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "kof4_p",
+    "fpr": 0.024659375,
+    "false_iso": 0.0486,
+    "det1": 1.0
+   },
+   {
+    "r": 4,
+    "agg": "ema_p",
+    "fpr": 0.023653125000000004,
+    "false_iso": 0.0442,
+    "det1": 1.0
+   }
+  ],
+  "long": [
+   {
+    "r": 1,
+    "rounds": 256,
+    "agg": "and",
+    "false_iso_long": 0.8091666666666667,
+    "false_iso_16": 0.49133333333333334,
+    "unavailability": 0.37000520833333334,
+    "lies_per_round": 0.27083984375,
+    "lies_delivered_per_round": 0.014095052083333334,
+    "detected_runs": 1.0
+   },
+   {
+    "r": 1,
+    "rounds": 256,
+    "agg": "and_db",
+    "false_iso_long": 0.6125,
+    "false_iso_16": 0.1975,
+    "unavailability": 0.15065299479166666,
+    "lies_per_round": 0.27083984375,
+    "lies_delivered_per_round": 0.2588671875,
+    "detected_runs": 0.7216666666666667
+   },
+   {
+    "r": 1,
+    "rounds": 256,
+    "agg": "kof4_p",
+    "false_iso_long": 0.6921666666666667,
+    "false_iso_16": 0.31783333333333336,
+    "unavailability": 0.207033203125,
+    "lies_per_round": 0.27083984375,
+    "lies_delivered_per_round": 0.01552734375,
+    "detected_runs": 1.0
+   },
+   {
+    "r": 1,
+    "rounds": 256,
+    "agg": "ema_p",
+    "false_iso_long": 0.403,
+    "false_iso_16": 0.074,
+    "unavailability": 0.114580078125,
+    "lies_per_round": 0.27083984375,
+    "lies_delivered_per_round": 0.26807291666666666,
+    "detected_runs": 0.7416666666666667
+   },
+   {
+    "r": 1,
+    "rounds": 256,
+    "agg": "ema_p_long",
+    "false_iso_long": 0.4055,
+    "false_iso_16": 0.074,
+    "unavailability": 0.12199934895833334,
+    "lies_per_round": 0.16723958333333333,
+    "lies_delivered_per_round": 0.16582682291666667,
+    "detected_runs": 0.7416666666666667
+   }
+  ],
+  "windows16": {
+   "1": 292,
+   "2": 152,
+   "4": 76
+  },
+  "windows_long": 18
+ }
+}

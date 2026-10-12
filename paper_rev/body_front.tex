@@ -1,0 +1,396 @@
+\begin{document}
+
+\history{Date of publication xxxx 00, 0000, date of current version xxxx 00, 0000.}
+\doi{10.1109/ACCESS.2026.DOI}
+
+\title{Congestion-Tolerant and Auditable Trust Management for the
+Internet of Digital Twins}
+
+\author{\uppercase{Abdulelah Alwabel}\authorrefmark{1}, \IEEEmembership{Member, IEEE}
+}
+
+\address[1]{Department of Computer Sciences,
+    College of Computer Engineering and Sciences,
+    Prince Sattam bin Abdulaziz University,
+    Al-Kharj, Saudi Arabia}
+
+\tfootnote{This work was supported by Prince Sattam bin Abdulaziz
+University under Project PSAU/2026/R/1448.}
+
+\markboth
+{A. Alwabel: Congestion-Tolerant and Auditable Trust Management for IoDT}
+{A. Alwabel: Congestion-Tolerant and Auditable Trust Management for IoDT}
+
+\corresp{Corresponding author: Abdulelah Alwabel (e-mail: a.alwabel@psau.edu.sa)}
+
+\begin{abstract}
+The Internet of Digital Twins (IoDT) trust model mirrors every IoT node
+with a cloud-resident twin and isolates a node when any of four binary
+factors (energy, packet delivery ratio, traceability and twin
+notification) fails.  This rule is fragile under congestion, trusts a
+single twin, and keeps verdicts in a mutable database.  We propose
+three extensions that keep the factor set: a weighted score smoothed by
+an exponential moving average with a per-factor persistence check;
+quorum voting over signed votes of replicated twins; and a signed
+Merkle audit log kept off the decision path.  In simulation, any rule
+requiring two failures removes most false isolations at low
+congestion, but only the smoothed score keeps them low as congestion
+rises: at $4\%$ per-factor congestion it falsely isolated $1.1\%$ of
+honest nodes within 16 rounds, against $93\%$ for the AND and
+$14$--$26\%$ for two-failure rules, at the cost of one extra round.
+On two public packet-delivery traces it still had the lowest false
+isolation in every setting, but real losses are bursty and
+concentrated on few nodes, raising its rates to $2.0$--$31\%$.  With
+identical evidence at all replicas, voting with two of five replicas
+corrupted kept detection at the level of an honest twin,
+whereas a corrupted single twin hid its node in every run.  The audit
+log rejected every edit by an adversary holding fewer than a quorum of
+replica keys.  Without congestion, an attacker that knows the rule can
+lie in $37.5\%$ of rounds without being flagged.
+\end{abstract}
+
+\begin{keywords}
+Audit log, digital twin, fog computing, Internet of Things, majority
+voting, reputation, trust management.
+\end{keywords}
+
+\titlepgskip=-15pt
+
+\maketitle
+
+% ====================================================================
+\section{Introduction}
+\label{sec:intro}
+% ====================================================================
+\IEEEPARstart{T}{he} Internet of Things (IoT) is a network of
+interconnected devices in which trust is fundamental to the security,
+reliability and scalability of large deployments.  Individual devices
+are cheap, constrained and routinely exposed to physical and network
+compromise; a survey of IoT vulnerabilities, complemented by an
+empirical measurement of exploited IoT devices on the Internet,
+documents the practical consequences of this exposure~\cite{neshenko2019demystifying}.
+Digital twin (DT) technology, reviewed for industry by Tao
+\textit{et al.}~\cite{tao2019digital} and surveyed for the IoT by Minerva, Lee and
+Crespi~\cite{minerva2020digital}, mirrors the state of each device so
+that its activity can be cross-checked.
+
+Soula \textit{et al.}~\cite{soula2024iodt} turned this idea into the
+Internet of Digital Twins (IoDT) trust model.  IoDT assigns one
+cloud-resident twin to every physical node and folds four binary
+factors --- energy, packet delivery ratio (PDR), traceability and twin
+notification --- into a single logical-AND verdict.  In its iFogSim
+evaluation the model identifies the two compromised nodes in $92\%$
+and $95\%$ of cases and isolates them within $250$--$300$~ms.  Three
+limitations remain.
+
+\begin{enumerate}
+\item \emph{Fragility under transient congestion.}  Under the AND, a
+single factor that drops for one round is enough to flag an honest
+node.  The original evaluation already reports a false positive
+(node N3) and notes that legitimate nodes can be mistaken for
+compromised ones during collisions or high-traffic periods; its
+authors suggest adjusting the threshold, or adapting the PDR
+threshold under congestion, but do not evaluate such a variant~\cite{soula2024iodt}.
+Dynamic-trust schemes~\cite{bao2012dynamic,nitti2014trustworthiness}
+instead keep continuous scores that age out transient noise.
+
+\item \emph{A single, corruptible twin and an untested adaptive
+adversary.}  The original evaluation considers attackers that send
+false notifications and a denial-of-service attacker~\cite{soula2024iodt}.
+It does not consider on-off attackers that lie only occasionally to
+stay below the detection threshold~\cite{sun2006trust},
+nor an adversary that corrupts the twin that watches a node, in which
+case nothing else in the pipeline can flag the node.  Threats against
+the twin itself are part of the DT threat taxonomy
+of~\cite{alcaraz2022digital}.
+
+\item \emph{No tamper-evident record.}  Verdicts are stored in a
+central database that can be silently rewritten if the cloud is
+compromised.  Blockchain-based IoT and fog frameworks provide tamper
+evidence~\cite{dorri2017blockchain,novo2018blockchain,kumar2020blockedge,%
+dewanta2021bpt,akram2024tmiodt}, but most of them read from or write
+to the chain while a decision is being made, and the latency and
+computational overhead of blockchain validation is the reason Soula
+\textit{et al.}~\cite{soula2024iodt} give for avoiding blockchain in
+real-time IoT.
+\end{enumerate}
+
+This paper keeps the IoDT factor set and addresses the three
+limitations with three extensions.  Its contributions are:
+\begin{itemize}
+\item a statement of IoDT trust evaluation as a per-round
+classification problem, with metrics that separate per-round false
+positives, the operationally relevant \emph{false-isolation} rate,
+the mean time to the first false isolation over long operation, and
+the cost of quarantine with re-admission (Section~\ref{sec:problem});
+\item Extension~I, a weighted continuous score with exponential
+moving-average (EMA) smoothing and a per-factor persistence check.
+A closed form and a counting argument show that the binary AND errs at
+rate $\Theta(q)$ in the per-factor congestion probability $q$, any
+rule that needs two failures at $\Theta(q^{2})$, and the smoothed
+score, at its default parameters and under independent congestion, at
+$\Theta(q^{3})$.  The evaluation therefore compares it with
+delay-matched baselines (a debounced AND and a 2-of-4 rule) and
+quantifies the lie budget of a rule-aware on-off attacker;
+\item Extension~II, quorum voting over signed, round-bound vote
+vectors of replicated twins, under which, when the replicas share
+their evidence and honest votes arrive in time, up to $k-1$ corrupted
+replicas change no verdict, and missing or withheld votes never cause
+a new isolation;
+\item Extension~III, a signed Merkle audit log of verdicts, votes and
+trust state that replicas endorse every $K$ rounds off the decision
+path and that can be anchored in a permissioned ledger, with a
+tamper-evidence theorem that makes explicit when an external
+checkpoint is needed; and
+\item a reproducible evaluation, with parameters selected on a
+separate tuning seed, covering two calibrations to the original
+evaluation, long horizons, stealthy, minimal-footprint and rule-aware
+attackers, corrupted, withholding and slow replicas, bursty,
+common-mode, cross-factor and uneven congestion, a $100$-sensor
+topology, and a trace-driven evaluation on two public packet-delivery
+datasets (Intel Lab and FlockLab).  The simulator, configurations, raw results and figure
+scripts are provided with the submission.
+\end{itemize}
+
+The rest of the paper is organised as follows.
+Section~\ref{sec:background} reviews related work,
+Section~\ref{sec:problem} formalises the problem, the threat model and
+the trust assumptions, Section~\ref{sec:proposedModel} presents the
+three extensions with their analysis, Section~\ref{sec:resultsAndDiscussion}
+reports the experiments, Section~\ref{sec:discussion} discusses them
+and compares the design with related frameworks, and
+Section~\ref{sec:conclusion} concludes.
+
+% ====================================================================
+\section{Related Work}
+\label{sec:background}
+% ====================================================================
+\emph{Digital twins.}  Tao \textit{et al.}~\cite{tao2019digital}
+review the state of the art of digital twins in industry, where a twin
+integrates the physical and cyber spaces of a product or process.  Minerva \textit{et
+al.}~\cite{minerva2020digital} widen the view to the IoT, and Sleuters
+\textit{et al.}~\cite{sleuters2019digital} use twins for
+the semi-automated behaviour analysis of large distributed IoT
+systems.  Gehrmann
+and Gunnarsson~\cite{gehrmann2020digital} propose a twin-based security
+architecture for industrial control, Alcaraz and
+Lopez~\cite{alcaraz2022digital} catalogue DT security threats in a
+layered taxonomy that informs our threat model, and Empl \textit{et
+al.}~\cite{empl2022soar4iot} prototype SOAR4IoT, a security orchestration,
+automation and response application built on twins.
+
+\emph{Digital twins and blockchain.}  Onwubiko \textit{et
+al.}~\cite{onwubiko2023enabling} manage digital-twin documents with
+Ethereum smart contracts and IPFS storage: stakeholders approve
+document versions by a two-thirds threshold on chain and file hashes
+are anchored for traceability; the prototype is evaluated by gas cost
+and computes no trust score for devices.  Sasikumar \textit{et
+al.}~\cite{sasikumar2023blockchain} connect twins of an industrial IoT
+network through a proof-of-authority blockchain whose master nodes
+validate the network, and report lower energy consumption and better
+data security in simulation.  TMIoDT~\cite{akram2024tmiodt} combines a
+digital-twin network, a blockchain-based credit score and a
+deep-learning intrusion detector for drone services; it is discussed
+in Section~\ref{sec:res-comparison}.
+
+\emph{IoT trust management.}  Bao and Chen~\cite{bao2012dynamic} argue
+for trust that adapts over time instead of a verdict computed once,
+Nitti \textit{et al.}~\cite{nitti2014trustworthiness} carry the idea
+to the social IoT, and EigenTrust~\cite{kamvar2003eigentrust} gives the
+canonical recipe for continuous reputation by power iteration.  The
+beta reputation system of J{\o}sang and Ismail~\cite{josang2002beta}
+updates trust from counts of positive and negative observations with
+a forgetting factor.  Sun \textit{et
+al.}~\cite{sun2006trust} analyse on-off and bad-mouthing attacks on
+trust evaluation, and Chen, Bao and Guo~\cite{chen2016trust} evaluate
+trust management for the social IoT under self-promoting,
+bad-mouthing, ballot-stuffing and discriminatory attacks.  The
+surveys~\cite{yan2014survey,guo2017survey,konsta2023survey} review the
+field.  Hussain \textit{et al.}~\cite{hussain2020context} propose a
+context-aware trust and reputation model for fog-based IoT in which a
+device's context is its role or purpose in the network and the trust
+level in $[0,1]$ is updated recursively from previous values, with a
+weight of $0.7$ on the current trust level, and multi-source feedback.
+
+\emph{Fog and edge computing.}  Bonomi \textit{et
+al.}~\cite{bonomi2012fog} introduce fog computing, Chiang and
+Zhang~\cite{chiang2016fog} survey its research opportunities for the
+IoT, and Shi \textit{et
+al.}~\cite{shi2016edge} push computation further to the edge.
+
+\emph{Blockchain for IoT and fog.}  Dorri \textit{et
+al.}~\cite{dorri2017blockchain} build a lightweight chain for the smart
+home, and Novo~\cite{novo2018blockchain} uses one for scalable access
+management.  Debe \textit{et
+al.}~\cite{debe2019iot} add an Ethereum-based reputation system for
+public fog nodes.  BlockEdge~\cite{kumar2020blockedge} integrates
+blockchain pre-processing into an industrial edge pipeline, and
+BPT~\cite{dewanta2021bpt} establishes trust between vehicles before a
+fog-computing service through a bid and rating exchange recorded on a
+chain.
+
+\emph{Tamper-evident logs and anchoring.}  Tamper evidence does not
+require a blockchain.  Haber and Stornetta~\cite{haber1991time} link
+time-stamped documents by hashes, Schneier and
+Kelsey~\cite{schneier1999secure} make audit logs on untrusted machines
+tamper-evident with hash chains, and Crosby and
+Wallach~\cite{crosby2009efficient} use history trees to make such logs
+efficient to audit.  Certificate
+Transparency~\cite{laurie2013rfc6962} publishes signed Merkle tree
+heads whose leaf and interior hashes are domain-separated.  The
+Keyless Signature Infrastructure of Buldas \textit{et
+al.}~\cite{buldas2013ksi} publishes only the root of a hash tree, and
+Arbitrum~\cite{kalodner2018arbitrum} executes smart contracts
+off-chain while the chain records only hashes of their state.
+Extension~III follows this line: it is a signed Merkle log that a
+ledger may host but whose guarantee does not depend on one.
+Section~\ref{sec:res-comparison} compares the closest trust systems on
+the figures they actually report.
+
+\emph{Network-level anomaly detection.}  N-BaIoT~\cite{meidan2018nbaiot}
+detects botnet traffic with deep autoencoders.  It observes traffic
+rather than behavioural trust factors and is complementary to the
+present work.
+
+% ====================================================================
+\section{Problem Statement}
+\label{sec:problem}
+% ====================================================================
+For every pair of communicating nodes, the IoDT model
+of~\cite{soula2024iodt} evaluates four binary factors.  Energy $E$ is
+one when the energy a node consumed lies within the bounds
+$[E_{\min},E_{\max}]$; $E_{\max}$ follows from the capacity of the
+node's super-capacitor and $E_{\min}$ from the CSMA/CA transmission
+and back-off cost, both scaled by the number of packets sent.  The PDR
+score is one when the measured PDR reaches a threshold
+$\Theta_{\mathrm{PDR}}$ ($90\%$ is the example value
+of~\cite{soula2024iodt}).  Traceability $T$ is one when the node's most
+recent claimed transaction is present in the trust database, and the
+twin-notification score $W$ is one unless the twin of the destination
+named in the node's notification denounces the claimed communication
+(our reading of the notification check of~\cite{soula2024iodt}).  The
+verdict is the logical AND
+\begin{equation}
+\mathrm{Trust}(i) =
+E(i) \wedge \mathrm{PDR}(i) \wedge T(i) \wedge W(i).
+\label{eq:binary_and}
+\end{equation}
+
+\subsection{System Notation}
+\label{subsec:notation}
+Let $\mathcal{N}$ be the set of physical nodes and
+$\mathcal{N}_c\subset\mathcal{N}$ the unknown set of compromised
+nodes.  Time is divided into evaluation rounds $t=1,2,\dots$; in every
+round the trust engine computes, for every node $i$, the factor vector
+\begin{equation}
+\mathbf{x}_t(i) =
+\bigl(E_t,P_t,T_t,W_t\bigr)(i)
+\in \{0,1\}\times[0,100]\times\{0,1\}^{2}
+\label{eq:factor_vector}
+\end{equation}
+where $P_t$ is the PDR in percent.  A trust-aggregation function $f$
+maps the history $\mathbf{x}_{1:t}(i)$ to a verdict
+$\hat{y}_t(i)\in\{0,1\}$, with $\hat{y}=0$ meaning ``flagged''.
+
+\subsection{Performance Metrics}
+\label{subsec:metrics}
+The following metrics are used throughout.
+\begin{itemize}
+\item The \emph{per-round false-positive rate} over a horizon of $T$
+rounds,
+\begin{equation}
+\mathrm{FPR}=\frac{1}{T\,|\mathcal{N}\setminus\mathcal{N}_c|}
+\sum_{i\notin\mathcal{N}_c}\sum_{t=1}^{T}\mathbb{1}[\hat{y}_t(i)=0].
+\label{eq:fpr}
+\end{equation}
+\item The \emph{false-isolation rate}: the share of honest nodes
+flagged at least once within the horizon $T$.  IoDT isolates a node as
+soon as it is flagged~\cite{soula2024iodt}, so this is the number that
+matters for a run.  It grows with $T$; the main tables use $T=16$
+rounds, the length of one reference scenario
+(Section~\ref{sec:setup}), and Section~\ref{sec:res-long} reports it
+for up to $1{,}024$ rounds.
+\item The \emph{mean time to first false isolation} (MTTFI) of an
+honest node over long operation, estimated as the inverse of the rate
+at which flags start on honest nodes; it does not depend on $T$.
+Strictly, this is the mean time between flag onsets; when flags are
+frequent it slightly overstates the time to the first one (about $8$
+against $7$ rounds for the AND at $q=0.04$), which does not change any
+comparison below.
+\item Under \emph{quarantine with re-admission}, a flagged node is
+quarantined and re-admitted after $R$ consecutive rounds in which a
+quorum of its twins reports $\tau_t\ge\theta_{r}$ and no persistence
+trigger ($R=8$, $\theta_r=0.9$); for the baselines, which have no
+$\tau_t$, the condition is $R$ consecutive rounds without a flag.  We report the share of time an honest
+node spends in quarantine, the number of false quarantines per node
+and hour, and the share of rounds in which an attacker delivers a lie
+while it is not quarantined.
+\item The \emph{detection rate}: the share of runs in which a
+compromised node is flagged at least once within $T$ rounds, together
+with the mean \emph{time to detection} (TTD) in rounds, and the
+\emph{steady-state per-round detection}, the share of rounds $t\geq3$
+in which a compromised node is flagged.
+\end{itemize}
+\subsection{Threat Model}
+\label{subsec:threat}
+Following the IoT threat survey of~\cite{neshenko2019demystifying} and
+the DT threat taxonomy of~\cite{alcaraz2022digital}, the adversary can
+compromise a subset $\mathcal{N}_c$ of physical nodes, corrupt at most
+$c$ of the $n$ twin replicas that watch a node, steal replica signing
+keys, and rewrite or delete records in the cloud.  Compromised nodes
+behave in one of four ways.
+\begin{itemize}
+\item \emph{Lie (IoDT scenario).}  As in~\cite{soula2024iodt}, the
+attacker reports a false destination to its twin, and the twin of the
+falsely named destination denounces the claim.  We model a lie as
+setting $W=0$ and, because the claimed transaction is not found in the
+database, also $T=0$; the second effect is our modelling choice.  The
+attacker lies in each round with probability $p\in(0,1]$; $p=1$ is the
+original naive attacker and $p<1$ a stealthy one.
+\item \emph{Minimal-footprint lie.}  The attacker arranges for the
+claimed transaction to be logged, so a lie costs only $W=0$, the
+smallest observable deviation.
+\item \emph{Rule-aware on-off lie.}  The attacker knows the
+aggregation rule and its parameters, observes its own past evidence,
+and lies only in rounds in which, absent congestion, no trigger would
+fire; once flagged it behaves honestly until it is re-admitted.  This
+is the on-off attack of~\cite{sun2006trust} against a known detector.
+\item \emph{Corrupted twins.}  The adversary controls $c$ replicas
+of the twins that watch the two compromised nodes.  Corrupted replicas
+vote \textsc{trust} for the attackers (\emph{shielding}), may also
+vote \textsc{flag} for honest nodes (\emph{framing}), or may withhold
+their votes.
+\end{itemize}
+Attackers that never deviate on any factor are indistinguishable from
+honest nodes at this layer and are out of scope.
+
+Table~\ref{tab:threats} lists which component the design trusts for
+what, and which attacks from the IoT trust literature it covers.
+
+\begin{table}[!t]
+\caption{Trust assumptions and threat coverage.}
+\label{tab:threats}
+\centering
+\renewcommand{\arraystretch}{1.1}
+\footnotesize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular}{p{0.30\columnwidth} p{0.62\columnwidth}}
+\toprule
+\textbf{Component / attack} & \textbf{Assumption or coverage} \\
+\midrule
+Fog relay & Trusted to relay evidence and to enforce isolation; a compromised fog node is out of scope \\
+Twin replicas & Up to $k-1$ of $n$ Byzantine: shield, frame or withhold (Sec.~\ref{sec:res-ext2}) \\
+Trust engine & Trusted for timeliness; the enforced verdicts are checked against the signed votes at every header commit, so an unsupported verdict is exposed within $K$ rounds plus the append time, but not prevented (Sec.~\ref{sec:ext2}) \\
+Log storage, ledger & May delete or rewrite; rewrites are rejected by the verifier (Theorem~\ref{thm:tamper}); deleting the newest windows is detected only against a newer checkpoint \\
+Checkpoint channel & Controlled independently of the cloud operator \\
+\midrule
+Lies, stealthy lies & Covered for frequent lies; liars at $p\le0.25$ are detected slowly (Sec.~\ref{sec:res-ext1}, \ref{sec:res-stealth}) \\
+Rule-aware on-off & Partly: a lie budget remains (Sec.~\ref{sec:res-stealth}) \\
+Bad-mouthing via $W$ & Not covered: a compromised destination can denounce an honest neighbour; repeated denunciations trigger the persistence check \\
+Ballot-stuffing via $W$ & Partly: a colluding destination can hide the $W$ failure; under our lie model the lie still fails $T$, but a liar that also gets its transaction logged is not detected \\
+Sybil, whitewashing & Out of scope: identities are provisioned by the operator~\cite{douceur2002sybil,friedman2001social} \\
+Denial of service & Detected in~\cite{soula2024iodt} mainly through abnormal energy use (a DoS against a twin); not re-evaluated here \\
+\bottomrule
+\end{tabular}
+\end{table}
+

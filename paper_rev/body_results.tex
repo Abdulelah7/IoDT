@@ -1,0 +1,705 @@
+% ====================================================================
+\section{Results}
+\label{sec:resultsAndDiscussion}
+% ====================================================================
+
+\subsection{Experimental Setup}
+\label{sec:setup}
+The extensions are evaluated with a discrete-round Python simulator of
+the IoDT factor model.  It follows the topology of the reference
+scenario of~\cite{soula2024iodt}: eight sensors, two of which
+(COMP1 and COMP2, labelled C1 and C2 in Fig.~\ref{fig:architecture}) are compromised, attached to two fog nodes, with
+twins and the trust engine in the cloud.  The simulator models the
+trust logic only; it is not a re-implementation of the iFogSim
+evaluation of~\cite{soula2024iodt}, whose resource and energy model it
+does not include~\cite{gupta2017ifogsim}.  Delays are counted in
+evaluation rounds.  Where a time is given, it assumes a round length
+$T_{\mathrm{round}}=117$~ms, obtained by dividing the $1875$-ms
+execution time reported for the IoDT scenario in~\cite{soula2024iodt}
+into 16 rounds; the
+original model itself has no rounds, so this conversion is an
+assumption.  A run lasts $T=16$ rounds unless stated otherwise.
+
+In every round each factor of every node is corrupted independently
+with probability $q$ (assumption A1).  Because the congestion level of
+a real deployment is unknown, results are reported over a range of
+$q$.  Two levels are tied to the original evaluation, in which one of
+six honest nodes (N3) was misidentified in $2\%$ of
+cases~\cite{soula2024iodt}, a figure whose unit is not stated.
+\emph{Reading~A} takes it as a per-node, per-round rate of $2\%/6$,
+which the binary AND approximately reaches at $q=0.001$ (per-round
+FPR $0.40\%$ against $0.33\%$).  \emph{Reading~B} takes it as a
+per-run false-isolation rate over the 16-round scenario, again
+divided among the six honest nodes ($2\%/6$ per node), which the AND
+reaches at $q=5.2\times10^{-5}$.  Neither calibration
+reproduces the detection side: the simulated AND detects both attackers
+in every run, against $92\%$ and $95\%$ in~\cite{soula2024iodt},
+because a lie here always fails $W$ and $T$, while the causes of the
+missed detections in the iFogSim runs are not reported.  The stress
+level is $q=0.04$.  A healthy PDR is drawn uniformly from $[92,100]\%$
+and a degraded one from $[60,89]\%$, against the $90\%$ threshold.
+
+Extension~I is compared with the binary AND of~\cite{soula2024iodt}
+and with two delay-matched rules: the AND required to fail in two
+consecutive rounds (\emph{debounced AND}), which has the same one-round
+delay as Extension~I, and a rule that flags when two of the four
+factors fail in the same round or the persistence check fires
+(\emph{2-of-4 rule}).  A beta reputation score~\cite{josang2002beta}
+on the AND observation, tuned on seed~1 by an analogous rule
+(naive liar flagged within two rounds without congestion, lowest FPR
+at $q=0.04$, near-ties resolved towards the simpler setting),
+reduced to the debounced AND (its FPR was within $0.002$ percentage
+points in every cell of Table~\ref{tab:headline}) and is not shown.
+The \emph{full system} is Extension~I in each of five replicas with a
+$3$-of-$5$ quorum.  Because its replicas receive identical evidence
+(B4), its verdicts coincided with those of Extension~I in every cell
+of Table~\ref{tab:headline} (its row is therefore omitted), also with two corrupted replicas that
+shield the attackers and frame honest nodes;
+Section~\ref{sec:res-ext2} evaluates corrupted replicas in detail.
+
+The parameters of Extension~I were selected on a tuning seed (seed~$1$)
+by two rules: the lowest per-round FPR at $q=0.04$ among settings that
+flag a naive liar within two rounds on average, which selects
+$(\alpha,\theta)=(0.5,0.70)$; and the lowest FPR among persistence
+windows that flag a persistent minimal-footprint liar within four
+rounds and detect one that lies in half of the rounds in at least
+$90\%$ of runs, which selects $4$ of $8$.  Every reported cell uses
+seed~$0$ with $2{,}000$ runs unless stated otherwise (the long-horizon
+runs use seeds $100$--$105$).  Per-round rates carry $95\%$
+percentile-bootstrap intervals over runs, which respect the correlation
+between rounds of a run, and run-level proportions carry $95\%$ Wilson
+intervals.  For a zero count we give the one-sided $95\%$ bound $3/N$
+over the $N$ honest node-runs ($0.025\%$ for $N=12{,}000$), which also
+bounds the per-round FPR.  Table~\ref{tab:params} lists the defaults.
+The experiments ran in Python~3.13 with NumPy and the
+\texttt{cryptography} package (OpenSSL) on an Intel Xeon at $2.8$~GHz,
+single-threaded.  The tuning grids are provided with the
+supplementary material.
+
+\begin{table}[!t]
+\caption{Default parameters of the evaluation.}
+\label{tab:params}
+\centering
+\renewcommand{\arraystretch}{1.1}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lll}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Default} \\
+\midrule
+$w_E,w_P,w_T,w_W$ & weights (\ref{eq:weighted_score}) & $.3,.3,.2,.2$ \\
+$\alpha,\ \theta$ & EMA factor, threshold (\ref{eq:ema}) & $0.5,\ 0.70$ \\
+$m,\ w$ & persistence check & $4$ of $8$ rounds \\
+$m_2,\ w_2$ & optional second window & off ($8$ of $32$) \\
+$q$ & per-factor congestion rate & $5.2\times10^{-5}$--$0.04$ \\
+$T$ & horizon of a run & $16$ rounds \\
+$R,\ \theta_r$ & re-admission after & $8$ rounds with $\tau_t\ge0.9$ \\
+$n,\ k$ & replicas, quorum & $5,\ 3$ \\
+$K$ & header (commit) period & $10$ rounds \\
+Runs & Monte-Carlo runs per cell & $2{,}000$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ====================================================================
+\subsection{Congestion Tolerance}
+\label{sec:res-ext1}
+Table~\ref{tab:headline} compares the aggregators at five congestion
+levels.  Every aggregator detected both naive attackers in every run at
+every level, so the table reports what differs: false positives and
+delay.
+
+\begin{table*}[!t]
+\caption{Congestion tolerance of Extension~I and the baselines (2{,}000 runs, 16 rounds, two significant figures; 95\% intervals in brackets; zero counts with their one-sided 95\% bound).}
+\label{tab:headline}
+\centering
+\renewcommand{\arraystretch}{1.05}
+\setlength{\tabcolsep}{5pt}
+\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+ & & & \textbf{TTD, naive} & \multicolumn{2}{c}{\textbf{Minimal-footprint liar}} \\
+\cmidrule(lr){5-6}
+\textbf{Aggregator} & \textbf{Per-round FPR \%} & \textbf{False isolation \%} &
+\textbf{liar (rounds)} & \textbf{Det.\ \%} & \textbf{TTD (rounds)} \\
+\midrule
+%%T:tab_headline%%
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Three regimes appear.  At reading~B the AND falsely isolates $0.39\%$
+of honest nodes within 16 rounds, close to the $0.33\%$ that the
+reading targets, and every rule that needs more than one failure
+isolates none; there is little to improve.  At reading~A the AND
+isolates $6.2\%$, while the debounced AND and the 2-of-4 rule isolate
+$0.017\%$ and $0.0083\%$ (two and one of $12{,}000$ honest node-runs)
+and Extension~I none.  At this level any rule that needs two failures
+removes almost all false isolations, and the 2-of-4 rule does so
+without delaying detection of a naive liar (a minimal-footprint liar
+still takes it about four rounds).  Only as congestion grows does smoothing
+make the difference: at $q=0.005$ Extension~I still records no false
+flag where the debounced AND isolates $0.56\%$ and the 2-of-4 rule
+$0.32\%$; at $q=0.02$ the figures are $0.18\%$, $8.7\%$ and $3.8\%$;
+and at $q=0.04$ they are $1.1\%$, $26\%$ and $14\%$, against $93\%$
+for the AND.
+
+Fig.~\ref{fig:qsweep} shows why.  The fitted log--log slopes of the
+per-round FPR are $0.99$ for the AND ($q$ from $0.0005$ to $0.02$),
+$2.0$ for both two-failure rules ($q$ from $0.002$ to $0.04$), and
+$3.1$ for Extension~I ($q$ from $0.02$ to $0.08$; below $0.02$ it
+records too few flags to fit), in line with the $\Theta(q)$,
+$\Theta(q^{2})$ and $\Theta(q^{3})$ orders of
+Section~\ref{subsec:ext1-math}.  Equation~(\ref{eq:fpr_and}) predicts
+$15.07\%$ for the AND at $q=0.04$, against $15.04\%$ measured.  The
+price of smoothing is one round: Extension~I isolates a naive liar after
+$1.96$--$2.00$ rounds, like the debounced AND, where the AND and the
+2-of-4 rule need one.  Extension~I detects the minimal-footprint liar
+in every run at every level, after $3.9$--$4.0$ rounds, as
+Proposition~\ref{prop:persist} predicts.  Above $q\approx0.08$ every
+aggregator degrades: at $q=0.12$ Extension~I falsely isolates $30\%$
+of honest nodes within 16 rounds.
+
+\Figure[!t](topskip=0pt,botskip=0pt,midskip=0pt)[width=\columnwidth]{figs/fig_qsweep.png}
+{Per-round FPR (top, logarithmic axes) and false isolation within 16 rounds (bottom) against the per-factor congestion rate, with dotted lines at reading~A and at the stress level.\label{fig:qsweep}}
+
+% ====================================================================
+\subsection{Long Operation and Re-admission}
+\label{sec:res-long}
+A deployed trust engine runs for far longer than 16 rounds.
+Table~\ref{tab:long} extends the horizon to
+$4{,}096$ rounds ($600$ runs per cell, attackers honest).  False
+isolation grows with the horizon for every rule: at $q=0.04$
+Extension~I falsely isolates $1.2\%$ of honest nodes within 16 rounds
+in these runs ($1.1\%$ in Table~\ref{tab:headline}), $20\%$ within
+$256$ and $60\%$ within $1{,}024$, while the debounced AND and the
+2-of-4 rule reach $99\%$ and $91\%$ within $256$ rounds.
+
+The mean time to the first false isolation (MTTFI) does not depend on
+the horizon.  At reading~A it is $250$ rounds for the AND (about
+$29$~s at the assumed period), $6.2\times10^{4}$ rounds for the
+debounced AND ($2.0$~h) and $1.5\times10^{5}$ for the 2-of-4 rule
+($5.0$~h).  Extension~I recorded no flag in $1.5\times10^{7}$ honest
+node-rounds, so its MTTFI is at least $4.9\times10^{6}$ rounds ($6.7$
+days) at $95\%$ confidence.  At $q=0.005$ its MTTFI is
+$7.4\times10^{5}$ rounds ($24$~h), against $2.6\times10^{3}$ rounds
+($5$~min) and $6.6\times10^{3}$ rounds ($13$~min) for the two simple
+rules; at $q=0.04$ it is $1.1\times10^{3}$ rounds ($2.2$~min), against
+$52$ and $110$ rounds.
+
+\begin{table}[!t]
+\caption{Long operation (600 runs of 4{,}096 rounds; no attackers): false isolation within 1{,}024 rounds, MTTFI, and quarantine with re-admission.}
+\label{tab:long}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lrrrr}
+\toprule
+ & \textbf{False isol.} & \textbf{MTTFI} & \textbf{Quarant.} & \textbf{False quar.} \\
+\textbf{Aggregator} & \textbf{1{,}024 rds \%} & \textbf{(rounds)} & \textbf{time \%} & \textbf{/node/h} \\
+\midrule
+%%T:tab_long%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+With quarantine and re-admission (Section~\ref{subsec:metrics}), a
+falsely quarantined honest node returns after $8$ to $18$ rounds on
+average ($9$ to $16$ under Extension~I).  At $q=0.04$ an honest node
+then spends $1.4\%$ of its time in quarantine under Extension~I ($27$
+false quarantines per node and hour), against $7.2\%$, $15\%$ and $73\%$
+under the 2-of-4 rule, the debounced AND and the AND.  At $q=0.005$ the
+share is $0.0013\%$ under Extension~I and $0.12$--$15\%$ under the
+others.  Under sustained congestion as high as $q=0.04$, false
+quarantines are an operating cost of every rule, which Extension~I cuts
+by a factor of $5$ to $50$; at lower congestion it removes them.
+
+% ====================================================================
+\subsection{Stealthy, Minimal and Rule-Aware Attackers}
+\label{sec:res-stealth}
+Table~\ref{tab:stealth} varies the lying rate $p$ of attackers that lie
+at random.  Stealth has a price for every rule except the AND, which
+pays for its detection with false isolation.  At reading~A,
+Extension~I detects a liar that fails $T$ and $W$ in $97\%$ of runs at
+$p=0.5$ but in $57\%$ at $p=0.25$ and $13\%$ at $p=0.10$ within
+16 rounds, much like the debounced AND; over 64 rounds the last two
+figures rise to $97\%$ and $46\%$.  The 2-of-4 rule flags every lie
+that fails two factors and detects such a liar almost as well as the
+AND ($82\%$ of runs at $p=0.10$), at the false-isolation cost of
+Table~\ref{tab:headline}.  A liar that fails only $W$ is
+detected by Extension~I in $92\%$ of runs at $p=0.5$ and $32\%$ at
+$p=0.25$ ($86\%$ over 64 rounds), about as often as by the 2-of-4
+rule, whose persistence check is the same.  At $q=0.04$ every rule detects more, partly because
+congestion adds failures to the attacker's own record.
+
+\begin{table}[!t]
+\caption{Detection within 16 rounds (\%) of attackers that lie at random with probability $p$ (2{,}000 runs; the false isolation of each rule is that of Table~\ref{tab:headline}).}
+\label{tab:stealth}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{1.6pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & \multicolumn{4}{c}{\textbf{Lie fails $T$ and $W$}} & \multicolumn{4}{c}{\textbf{Lie fails $W$ only}} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+$p$ & AND & Deb. & 2-of-4 & Ext.~I & AND & Deb. & 2-of-4 & Ext.~I \\
+\midrule
+%%T:tab_stealth%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+A rule-aware attacker does better (Table~\ref{tab:aware}).  The
+simulated attacker predicts its own EMA from its past evidence
+(assuming a $96\%$ PDR), keeps a margin of $0.02$ above $\theta$, and
+respects every persistence window.  Without congestion it lied in $3$ of
+$8$ rounds ($37.5\%$) against Extension~I and in $7$ of $32$ ($21.9\%$)
+with a second window of $8$ failures in $32$ rounds, without being
+flagged --- the budgets of Proposition~\ref{prop:persist}.  Every lie
+still fails $W$, so the AND flags the first one, at a cost of $6.2\%$
+false isolation at reading~A.  At reading~A congestion rarely adds
+failures: over 256 rounds Extension~I detects the attacker in $37\%$ of
+runs ($T$ and $W$) and $20\%$ ($W$ only), and with re-admission the
+attacker delivers a lie in $36\%$ of rounds ($22\%$ with the second
+window).  At $q=0.04$ congestion pushes the attacker over a trigger more
+often, and the delivered share falls to $19\%$ ($14\%$); a rule-aware
+liar that fails only $W$ delivers $25\%$ ($16\%$).  The simulated
+attacker is tuned to Extension~I and faces every defence with the
+same strategy, so the AND and debounced-AND figures show what that
+attacker suffers, not what an attacker tuned to them would achieve;
+against the debounced AND it delivered $16\%$ of rounds ($T$ and $W$)
+and $4.5\%$ ($W$ only) at $q=0.04$.  Analytically, the simple rules
+leave budgets of their own: the debounced AND never sees lies that
+are one round apart (budget $50\%$), and the 2-of-4 rule flags every
+lie that fails $T$ and $W$ but leaves a $W$-only liar the same
+$37.5\%$ budget.  Threshold rules with published parameters thus leave
+a lie budget that a second, longer window shrinks but does not remove.
+
+\begin{table}[!t]
+\caption{Rule-aware on-off attacker tuned to Extension~I (all defences face the same strategy): lie budget without congestion, detection within 256 rounds at reading~A (500 runs), lies delivered per round with re-admission (400 runs of 2{,}048 rounds, $T$ and $W$ fail), and the honest nodes' quarantine time at $q=0.04$.}
+\label{tab:aware}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{2.0pt}
+\begin{tabular}{lrrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{\textbf{Budget \%}} & \multicolumn{2}{c}{\textbf{Det.\ \%}} & \multicolumn{2}{c}{\textbf{Delivered \%}} & \textbf{Hon.} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+\textbf{Defence} & $TW$ & $W$ & $TW$ & $W$ & $q{=}.001$ & $q{=}.04$ & \textbf{quar.\,\%} \\
+\midrule
+%%T:tab_aware%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ====================================================================
+\subsection{Corrupted, Withholding and Slow Twins}
+\label{sec:res-ext2}
+Table~\ref{tab:collusion} turns to Extension~II at $q=0.04$, with
+identical evidence for all replicas (B4).  A
+corrupted single twin hides its node in every run.  With $3$-of-$5$
+voting, up to $k-1=2$ corrupted replicas that shield the attackers and
+frame honest nodes change nothing: detection stays at $100\%$ of runs
+and of steady-state rounds, and the FPR and false isolation equal those
+of an honest single twin, as Section~\ref{sec:ext2} argues.  A third
+corrupted replica ($c=k$) defeats the vote: the attackers are never
+flagged and every honest node is isolated.  Deployments that expect
+three replicas at risk need $4$-of-$7$, which tolerates them.
+
+Missing votes are handled by the quorum rule.  With two withholding
+replicas plus $5\%$ vote timeouts, or with $20\%$ timeouts, it keeps
+false isolation at the level of an honest single twin and detection at
+$100\%$ of runs; the cost is rounds with no quorum ($14\%$ and
+$5.8\%$), in which verdicts are held and an alarm is raised.  With
+$20\%$ timeouts and two withholding replicas, half of all rounds have
+no quorum and per-round detection falls to $97\%$, but no missing
+vote caused a new isolation.  These timeout rows relax (B3); a node
+that is already isolated stays isolated, and cannot be re-admitted,
+while no quorum forms.
+
+(B4) matters.  When each replica instead misreads each factor
+independently with probability $\eta$ on top of the shared congestion
+($q=0.04$), five honest replicas lower false isolation from $12\%$
+(one twin) to $2.4\%$ at $\eta=0.05$, but replicas that frame honest
+nodes now tip the nodes whose honest replicas disagree: false
+isolation rises to $6.0\%$ with one framing replica and $29\%$ with
+two, and to $72\%$ with two at $\eta=0.10$ (against $9.3\%$ with
+five honest replicas).  Shielding costs little: with two shielding
+replicas, steady-state detection falls from $99.9\%$ to $98\%$ at
+$\eta=0.05$.  The ``honest twin'' guarantee of Extension~II therefore
+holds only when the replicas see the same evidence.
+
+\begin{table}[!t]
+\caption{Corrupted, withholding and slow replicas at $q=0.04$, identical evidence (2{,}000 runs; per-round detection in steady state).}
+\label{tab:collusion}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{2.0pt}
+\begin{tabular}{p{0.40\columnwidth}rrrrr}
+\toprule
+ & \textbf{Det.} & \textbf{Per-rd} & \textbf{FPR} & \textbf{False} & \textbf{No} \\
+\textbf{Setting} & \textbf{\%} & \textbf{det.\,\%} & \textbf{\%} & \textbf{isol.\,\%} & \textbf{quor.\,\%} \\
+\midrule
+%%T:tab_collusion%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ====================================================================
+\subsection{Audit Log: Cost and Tamper Evidence}
+\label{sec:res-ext3}
+Table~\ref{tab:chain} reports the audit log for $100$ sensors over
+$30$ rounds of simulator output, with one corrupted replica and $5\%$
+vote timeouts.  A header with three endorsements occupies $367$ to
+$371$~bytes (DER signatures vary slightly in length) whatever the
+number of nodes, so header storage falls from $11.0$~kB at $K=1$ to
+$1.1$~kB at $K=10$; at the assumed period and $K=10$ this is about
+$27$~MB a day for any fleet size.  Off-chain, the events, signed vote
+vectors and state records of the 30 rounds occupy $115$--$152$~kB, of
+which $87$~kB are events.
+
+\begin{table}[!t]
+\caption{Audit-log storage for 100 sensors over 30 rounds.}
+\label{tab:chain}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{rrrrr}
+\toprule
+$K$ & \textbf{Headers} & \textbf{Header bytes} & \textbf{Off-chain (B)} & \textbf{Max header (B)} \\
+\midrule
+%%T:tab_chain%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:tamper} reports $30$ random edits per cell at $K=10$.
+The verifier rejected every edit when the adversary held fewer than
+$k$ keys, whether it left the hashes untouched, recomputed them, or
+re-signed with $k-1$ stolen keys.  Substituting interior-node values
+for events and replaying a vote were rejected even with $k$ keys,
+because record lengths and vote bindings are checked.  The other
+$k$-key rows measure our implemented forger, not a limit of the
+scheme: by Theorem~\ref{thm:tamper} a forger that re-signs every
+affected record passes whenever no newer checkpoint exists.  Our
+forger duplicated events and truncated windows without re-signing the
+affected counts and votes, so it was rejected at $K=10$, whereas at
+$K=1$ a truncation passed without a checkpoint.  It rewrote a trust
+value, a state record or a vote and passed without a checkpoint or
+with an older one, and was always rejected against a newer one.  Its
+verdict edits were rejected without a checkpoint in $10\%$ of trials,
+all of them rounds in which a stolen replica's vote had timed out and
+the forger did not sign a replacement.  Finally, in $30$ trials a trust engine
+that wrote a verdict its votes did not support never obtained the $k$
+endorsements needed to commit the window.  These trials check the
+implementation; the guarantee itself rests on the cryptographic
+assumptions.
+
+\begin{table}[!t]
+\caption{Edits rejected by the verifier (\%, 30 per cell, $K=10$; the ``older'' column uses the 20--21 trials whose edit follows an earlier header) by edit and adversary; ``--'': not run.}
+\label{tab:tamper}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{2.2pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+ & \multicolumn{2}{c}{\textbf{No keys}} & \textbf{$k{-}1$} & \multicolumn{3}{c}{\textbf{$k$ keys, checkpoint}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){5-7}
+\textbf{Edit} & \textbf{edit} & \textbf{rehash} & \textbf{keys} & \textbf{none} & \textbf{older} & \textbf{newer} \\
+\midrule
+%%T:tab_tamper%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ====================================================================
+\subsection{Robustness}
+\label{sec:res-robust}
+Fig.~\ref{fig:robust} relaxes assumptions (A1) and (A2) in four ways.
+
+\emph{Bursts.}  Holding the mean congestion at $q=0.04$, a two-state
+Markov chain alternates between $q=0.02$ and $q=0.20$ (one ninth of
+the time in the high state) with mean bursts of $1$ to $32$ rounds.
+Longer bursts raise Extension~I's false isolation from $3.7\%$ to
+about $9\%$ when each node has its own chain (panel a), and from
+$4.2\%$ to about $9.5\%$ when one chain governs the whole network.  The AND
+($77$--$91\%$), the debounced AND ($18$--$29\%$) and the 2-of-4 rule
+($16$--$32\%$) stay far higher in either case.
+
+\emph{Common-mode events.}  An event that knocks out all factors of
+every node behind a fog node, with probability $q_{\mathrm{corr}}$ per
+round, cannot be told from an attack on all those nodes at once, and
+Extension~I's false isolation rises to $8.4\%$ at
+$q_{\mathrm{corr}}=0.005$ and $28\%$ at $0.02$ (panel b).  Because such
+events hit many nodes together, we evaluated \emph{domain
+suppression}: when more than half of a fog domain is flagged in the
+same round, those flags are discarded for that round (an alarm would
+be raised; it is not modelled).  It cuts
+false isolation to $1.6\%$ and $3.5\%$ at the same rates and left the
+detection of both attackers at $100\%$ of runs.  An adversary able to provoke
+common-mode events could use suppression to mask its own lies during
+them; that case is not evaluated.
+
+\emph{Cross-factor events.}  When one node-level event fails $P$, $T$
+and $W$ together ($4{,}000$ runs per point, no other noise), (A1) fails
+across factors and Extension~I errs at $\Theta(q^{2})$ (panel c): its
+FPR grows from $0.011\%$ to $0.055\%$ to $0.22\%$ as the event rate
+doubles from $0.01$ to $0.04$.  The debounced AND is then better
+at every rate ($0.15\%$ against $0.22\%$ at $0.04$), and the 2-of-4 rule (not plotted) is as bad
+as the AND, since every event fails three factors.  Such an event also
+looks exactly like a lie that fails $T$ and $W$ with a degraded PDR.
+
+\emph{Uneven congestion.}  Concentrating the same mean congestion on
+one factor ($0.13$ on it, $0.01$ on the others) leaves the AND
+almost unchanged ($15.0\%$ to $15.6\%$ per round) but raises Extension~I's per-round FPR eight- to ninefold, to
+$0.81$--$0.88\%$, and its false isolation to $4.8$--$5.7\%$ (panel d),
+because one factor now fails repeatedly and the persistence check
+fires.  Extension~I stays below the 2-of-4 rule ($11\%$), but a
+deployment that knows its noisiest factor should set $m$ per factor.
+
+\Figure[!t](topskip=0pt,botskip=0pt,midskip=0pt)[width=\textwidth]{figs/fig_robust.png}
+{Robustness to bursty (a), common-mode (b), cross-factor (c) and uneven (d) congestion.\label{fig:robust}}
+
+\emph{Scale.}  With $100$ sensors behind five fog nodes ($500$ runs, $q=0.04$),
+Extension~I isolated $1.1\%$ of honest nodes, as in the eight-node
+case, and with common-mode events at $q_{\mathrm{corr}}=0.005$ domain
+suppression brought false isolation from $9.0\%$ back to $2.0\%$.
+
+% ====================================================================
+\subsection{Trace-Driven Evaluation on Public Datasets}
+\label{sec:res-trace}
+The congestion of the previous sections is independent across factors,
+rounds and nodes.  To test the extensions on real loss patterns, we
+replaced it, for every node, with the packet-delivery record of a real
+deployment.  The Intel Lab trace~\cite{bodik2004intel} records which
+readings of $54$ Mica2Dot motes reached a base station, one per mote
+every $31$~s, over $36$ days of a lossy multi-hop network ($51\%$ of
+readings arrived; timestamp jitter is not counted as loss, and periods
+in which almost no mote was heard are logging gaps and are skipped).
+The FlockLab dataset~\cite{jacob2019flocklab} records, about every two
+hours in August 2019, which of $100$ back-to-back packets each of the
+$27$ TelosB nodes of the FlockLab testbed~\cite{lim2013flocklab}
+received from every other.  We took as fog gateways the two nodes that
+put the most other nodes in range, and let each of the $24$ remaining
+nodes in range report to the gateway it hears best (single hop, mean
+packet reception $95\%$).  Two of these nodes ran only during the first
+day and a half, so FlockLab windows use $22$ nodes and span the whole
+month.
+
+Each factor's evidence of a node in a round is one message, sent in up
+to $r$ attempts that use consecutive transmission opportunities of
+that node in the trace ($31$-s slots for Intel Lab, packets of one
+test for FlockLab); the factor fails when all $r$ attempts are lost.
+The retry count $r$ thus sets the loss level, which is then shaped
+entirely by the trace.  The two traces differ in time scale: an Intel
+Lab round lasts $4r$ slots ($8$ to $33$ minutes), whereas a FlockLab
+round spans a few milliseconds of back-to-back packets and windows that
+cross a test boundary join tests about two hours apart.  A round in
+which no evidence of a node arrives at all is treated as
+unavailability, and every rule keeps its previous verdict.  Each run
+draws a window of $16$ rounds and $32$ (Intel Lab) or $22$ (FlockLab)
+nodes alive throughout, two of which are attackers whose lies are added
+to their own real losses ($1{,}000$ runs per cell, drawn from $73$ to
+$309$ distinct windows).  No parameter was retuned.  Windows start on a
+grid of $16$ rounds, and the intervals below resample whole windows.
+
+\begin{table}[!t]
+\caption{False isolation within 16 rounds (\%) on two public packet-delivery traces by retry count $r$, with $q$ the share of lost factor messages in the evaluated windows (1{,}000 trace runs; 2{,}000 runs for the i.i.d.\ column).}
+\label{tab:trace}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{2.4pt}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & & & & & & & \multicolumn{2}{c}{\textbf{Ext.~I}} \\
+\cmidrule(lr){8-9}
+\textbf{Trace} & $r$ & $q$\,\% & AND & Deb. & 2-of-4 & Ext.~I & typ. & i.i.d. \\
+\midrule
+%%T:tab_trace%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:trace} gives the result.  Extension~I has the lowest
+false isolation in every cell, and the window-level interval of its
+difference to each other rule excludes zero in every cell (the
+smallest is $0.16$ to $1.1$ percentage points, against the debounced
+AND at FlockLab with $r=4$).  The traces narrow its lead, however.  At
+Intel Lab with $r=8$ ($7.9\%$ of messages lost) it falsely isolates
+$15\%$ [$12$, $19$] of honest nodes within 16 rounds, against
+$22$--$24\%$ for the two-failure rules and $42\%$ for the AND; with
+$r=16$ the figures are $6.5\%$ [$4.2$, $9.1$], $10$--$11\%$ and $21\%$.
+At FlockLab without retransmission it isolates $8.3\%$ [$7.5$, $9.2$]
+against $22$--$30\%$ and $48\%$, and with $r=4$ $2.0\%$ [$1.4$, $2.7$]
+against $2.6$--$3.1\%$ and $8.0\%$.  Independent congestion at the same
+mean rate (column ``i.i.d.'') would make the AND isolate far more nodes
+everywhere and Extension~I fewer everywhere except at the highest loss
+level (Intel Lab, $r=4$).  Two properties of real loss explain this.
+It is concentrated: at Intel Lab with $r=8$ the median node loses
+$5.6\%$ of its messages over the whole trace and the lossiest tenth
+$19\%$, so the AND's errors fall on a minority of nodes.  And it is
+bursty across factors and rounds: in the evaluated windows two or more
+factors of a node fail in the same round $1.4$ to $9.2$ times as often
+as independent losses would make them, and a failed factor fails again
+in the next round in $42$--$76\%$ of cases, which is the cross-factor
+case of Section~\ref{sec:res-robust}, in which smoothing errs at
+$\Theta(q^{2})$.  For the nodes whose long-run loss is at most the
+median (column ``typ.'', about $10{,}000$ to $15{,}500$ node-runs per
+cell), Extension~I's false isolation is $6.6\%$ and $0.91\%$ at Intel
+Lab ($r=8$, $16$) and below $0.7\%$ at FlockLab; $65$--$99\%$ of its
+false isolations fall on nodes with above-median loss.
+
+Detection is slightly lower than in the synthetic study.  Extension~I
+flagged a naive liar in $98.6$--$99.9\%$ of runs after about two rounds,
+and a minimal-footprint liar in $98.8$--$99.9\%$ after $3.7$--$4.1$
+rounds.  The misses are attacker nodes whose evidence was lost in
+almost every round of the window, so that their verdict stayed at
+\textsc{trust} under the silence rule; counting silent rounds as
+failures instead detects every attacker and raises false isolation by
+at most $2.4$ percentage points, with Extension~I still the lowest in
+every cell.
+
+Over longer windows false isolation grows for every rule: within $128$
+rounds (Intel Lab, $r=8$) and $256$ rounds (FlockLab, $r=1$) Extension~I
+isolates $30\%$ and $40\%$ of honest nodes against $41$--$66\%$ and
+$61$--$81\%$ for the other rules, and with re-admission honest nodes
+spend $14\%$ and $11\%$ of their time in quarantine against
+$15$--$37\%$.  The rule-aware attacker, still tuned to Extension~I,
+delivered a lie in $28\%$ (Intel Lab) and $27\%$ (FlockLab) of rounds
+against it, $17\%$ with the second window, and was detected in
+$61$--$74\%$ of runs; the AND and the 2-of-4 rule held it to about
+$1.5\%$ of rounds at the cost of the false isolation above.  The
+traces thus confirm the ordering of the synthetic study but not its
+magnitude: on real, lossy links every rule isolates honest nodes far
+more often, and per-node baselines that separate a weak link from
+misbehaviour are needed before isolation is automated.
+
+% ====================================================================
+\subsection{Latency}
+\label{sec:res-latency}
+Table~\ref{tab:latency} gives the measured cryptographic cost per round.
+Because each replica signs one vote vector per round, the engine
+verifies five signatures, $2.0$~ms for $8$ or $100$ nodes, and each
+replica signs once ($0.5$~ms); verifying one vote per node would cost the
+engine $203$~ms per round at $100$ nodes, more than the assumed
+$117$-ms period.  One EMA update for one node costs
+$0.1$~$\mu$s; the persistence check was not timed separately.  The remaining term is the time
+$d_{\mathrm{rep}}$ for votes to reach the engine, which depends on
+replica placement and was not measured: replicas in different
+availability zones of one cloud region are a single-digit number of
+milliseconds apart~\cite{aws2024az}, whereas replicas at different fog
+sites add a fog-to-cloud link ($100$~ms in the configuration
+of~\cite{soula2024iodt}) unless the engine runs at the fog.
+Extension~III adds nothing to the decision path.  Relative to the AND,
+isolating a naive liar therefore takes one more round of evidence plus
+about $2.5$~ms plus $d_{\mathrm{rep}}$.  All the added work runs in the
+fog and cloud, so the extensions add no computation or energy on the
+sensors.
+
+\begin{table}[!t]
+\caption{Measured per-round cost on the decision path (ms, $n=5$ replicas, single thread).}
+\label{tab:latency}
+\centering
+\renewcommand{\arraystretch}{1.08}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrr}
+\toprule
+\textbf{Operation} & \textbf{8 nodes} & \textbf{100 nodes} \\
+\midrule
+%%T:tab_latency%%
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ====================================================================
+\section{Discussion}
+\label{sec:discussion}
+% ====================================================================
+
+% ====================================================================
+\subsection{Comparison With Related Frameworks}
+\label{sec:res-comparison}
+Table~\ref{tab:comparison} positions the proposed system against the
+trust frameworks closest to it.  Each cell reflects what the cited
+paper describes, and the latency row reports what each paper measures.
+Temporal smoothing is marked $\checkmark$ for an explicit forgetting
+factor and $\circ$ for trust that accumulates history without one.
+The latency figures are heterogeneous (trust set-up, block operations,
+detect-and-isolate time) and come from different platforms, so they
+show where each system places its costs rather than ranking the
+systems.  Within this set, the proposed design is the only one that
+combines a continuous, smoothed trust score, replicated twins with
+voting, and a tamper-evident record kept off the decision path.
+
+\begin{table*}[!t]
+\caption{Comparison with related trust frameworks ($\checkmark$ yes, $\circ$ partial or optional, -- no).}
+\label{tab:comparison}
+\centering
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{6pt}
+\footnotesize
+\begin{tabular}{lccccccc}
+\toprule
+\textbf{Capability} & \textbf{BPT}~\cite{dewanta2021bpt} & \textbf{Debe}~\cite{debe2019iot}
+ & \textbf{Hussain}~\cite{hussain2020context} & \textbf{Onwubiko}~\cite{onwubiko2023enabling}
+ & \textbf{TMIoDT}~\cite{akram2024tmiodt} & \textbf{IoDT}~\cite{soula2024iodt} & \textbf{Proposed} \\
+\midrule
+Digital twin              & -- & -- & -- & \checkmark & \checkmark & \checkmark & \checkmark \\
+Continuous trust score    & \checkmark & \checkmark & \checkmark & -- & $\circ$ & -- & \checkmark \\
+Temporal smoothing        & $\circ$ & $\circ$ & \checkmark & -- & $\circ$ & -- & \checkmark \\
+Replicated twins, voting  & -- & -- & -- & -- & -- & -- & \checkmark \\
+Blockchain                & \checkmark & \checkmark & -- & \checkmark & \checkmark & -- & $\circ$ \\
+Chain off decision path   & $\circ$ & -- & n/a & -- & -- & n/a & \checkmark \\
+Tamper-evident record     & \checkmark & \checkmark & -- & \checkmark & \checkmark & -- & \checkmark \\
+\midrule
+Reported latency          & 2.47\,s & n.r. & n.r. & n.r. & 15--16\,ms & 250--300\,ms & +1 round \\
+(what it measures)        & trust set-up & & & (gas cost only) & block op. & detect + isolate & +2.5\,ms\,+\,$d_{\mathrm{rep}}$ \\
+\bottomrule
+\multicolumn{8}{l}{n.r.\ = not reported.} \\
+\end{tabular}
+\end{table*}
+
+TMIoDT~\cite{akram2024tmiodt} is the closest precedent.  It assigns
+each drone a blockchain-recorded credit score and validates
+transactions by proof-of-authority consensus, so the chain is involved
+in its trust decisions, and it detects intrusions with deep models trained
+on labelled traffic (about $99.1\%$ accuracy on ToN-IoT); its twins are
+not replicated.  The proposed score needs no training data and keeps
+the log off the decision path, but sees only the four behavioural
+factors, so the two approaches are complementary.
+
+\subsection{Limitations}
+Behaviour-based trust has hard limits, which the experiments make
+explicit.  An attacker that knows the rule keeps a lie budget
+($37.5\%$ of rounds against Extension~I without congestion,
+$21.9\%$ with a second window), low-rate random liars are detected
+slowly, and one that never deviates on any factor cannot be seen at
+this layer at all.  Bad-mouthing through the notification factor is
+not covered.  Common-mode events need domain suppression, which an
+adversary able to provoke them could abuse, and events that fail
+several factors at once lower the order of the error to
+$\Theta(q^{2})$.  On the architecture side, the fog relay is trusted
+(it enforces verdicts and logs the verdicts it enforced), although a
+replica hosted at a fog site may be corrupted, and the trust engine is
+trusted for timeliness; its integrity is checked after the fact,
+within $K$ rounds.  Extension~II assumes identical evidence and
+bounded vote delay; with independent replica errors, two framing
+replicas raise false isolation several-fold.  An adversary that controls
+$k$ replicas defeats any quorum by construction.  Finally, the
+evaluation is a simulation of the trust logic; honest losses come from
+synthetic congestion or from two public delivery traces mapped onto the
+factors by our retransmission model, attackers are simulated, and on
+those traces lossy nodes are falsely isolated often under every rule;
+under the silence rule a node that goes completely silent keeps its
+last verdict, so silence itself must be monitored separately.
+The round length, the header append
+latency and the replica delay $d_{\mathrm{rep}}$ are assumptions or
+were not measured, and no ledger was deployed.

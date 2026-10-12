@@ -1,0 +1,1368 @@
+{
+ "experiment": "e1_readmit",
+ "generated": "2026-10-11 06:43:03",
+ "rows": [
+  {
+   "q": 0.001,
+   "attacker": "naive",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.05416666666666667,
+    0.21333333333333335,
+    0.6291666666666667,
+    0.9829166666666667,
+    0.9991666666666666
+   ],
+   "onset_rate": 0.00398193359375,
+   "onset_rate_ci": [
+    0.0039266441894460075,
+    0.004037998348605187
+   ],
+   "onsets": 19572,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 251.13427345187003,
+   "mttfi_rounds_lower": 247.6474514521339,
+   "unavailability": 0.03148091634114583,
+   "false_quarantines_per_node_hour": 119.2470452724359,
+   "lies_delivered_per_round": 0.00048828125,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 1.0,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "naive",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0016666666666666668,
+    0.0033333333333333335,
+    0.01625,
+    0.03375
+   ],
+   "onset_rate": 1.6682942708333332e-05,
+   "onset_rate_ci": [
+    1.3441712641810406e-05,
+    2.0705721606890885e-05
+   ],
+   "onsets": 82,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 59941.46341463415,
+   "mttfi_rounds_lower": 48295.82948063974,
+   "unavailability": 0.0001336669921875,
+   "false_quarantines_per_node_hour": 0.5133213141025641,
+   "lies_delivered_per_round": 0.0009765625,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.99951171875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "naive",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.0009759521484375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.9995123291015625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "naive",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.0009759521484375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.9995123291015625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "naive",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.0009759521484375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.9995123291015625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "bernoulli_0.25",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.05416666666666667,
+    0.21333333333333335,
+    0.6291666666666667,
+    0.9829166666666667,
+    0.9991666666666666
+   ],
+   "onset_rate": 0.00398193359375,
+   "onset_rate_ci": [
+    0.0039266441894460075,
+    0.004037998348605187
+   ],
+   "onsets": 19572,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 251.13427345187003,
+   "mttfi_rounds_lower": 247.6474514521339,
+   "unavailability": 0.03148091634114583,
+   "false_quarantines_per_node_hour": 119.2470452724359,
+   "lies_delivered_per_round": 0.02444580078125,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.9030853271484375,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "bernoulli_0.25",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0016666666666666668,
+    0.0033333333333333335,
+    0.01625,
+    0.03375
+   ],
+   "onset_rate": 1.6682942708333332e-05,
+   "onset_rate_ci": [
+    1.3441712641810406e-05,
+    2.0705721606890885e-05
+   ],
+   "onsets": 82,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 59941.46341463415,
+   "mttfi_rounds_lower": 48295.82948063974,
+   "unavailability": 0.0001336669921875,
+   "false_quarantines_per_node_hour": 0.5133213141025641,
+   "lies_delivered_per_round": 0.160264892578125,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.3600860595703125,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.07104736328125,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.7170135498046875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.0664715576171875,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.7352850341796875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.0329229736328125,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.869346923828125,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_TW",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.05416666666666667,
+    0.21333333333333335,
+    0.6291666666666667,
+    0.9829166666666667,
+    0.9991666666666666
+   ],
+   "onset_rate": 0.00398193359375,
+   "onset_rate_ci": [
+    0.0039266441894460075,
+    0.004037998348605187
+   ],
+   "onsets": 19572,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 251.13427345187003,
+   "mttfi_rounds_lower": 247.6474514521339,
+   "unavailability": 0.03148091634114583,
+   "false_quarantines_per_node_hour": 119.2470452724359,
+   "lies_delivered_per_round": 0.0021258544921875,
+   "lies_per_round": 0.3702362060546875,
+   "attacker_quarantined": 0.9964941406250001,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_TW",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0016666666666666668,
+    0.0033333333333333335,
+    0.01625,
+    0.03375
+   ],
+   "onset_rate": 1.6682942708333332e-05,
+   "onset_rate_ci": [
+    1.3441712641810406e-05,
+    2.0705721606890885e-05
+   ],
+   "onsets": 82,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 59941.46341463415,
+   "mttfi_rounds_lower": 48295.82948063974,
+   "unavailability": 0.0001336669921875,
+   "false_quarantines_per_node_hour": 0.5133213141025641,
+   "lies_delivered_per_round": 0.367508544921875,
+   "lies_per_round": 0.3702362060546875,
+   "attacker_quarantined": 0.012939453125,
+   "attack_detected_runs": 0.96625
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_TW",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.4733038330078125,
+   "lies_per_round": 0.4945562744140625,
+   "attacker_quarantined": 0.051253662109375,
+   "attack_detected_runs": 0.85875
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_TW",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.362899169921875,
+   "lies_per_round": 0.3702362060546875,
+   "attacker_quarantined": 0.03457275390625,
+   "attack_detected_runs": 0.96625
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_TW",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.2168109130859375,
+   "lies_per_round": 0.2171875,
+   "attacker_quarantined": 0.021788330078124998,
+   "attack_detected_runs": 0.97625
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_W",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.05416666666666667,
+    0.21333333333333335,
+    0.6291666666666667,
+    0.9829166666666667,
+    0.9991666666666666
+   ],
+   "onset_rate": 0.00398193359375,
+   "onset_rate_ci": [
+    0.0039266441894460075,
+    0.004037998348605187
+   ],
+   "onsets": 19572,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 251.13427345187003,
+   "mttfi_rounds_lower": 247.6474514521339,
+   "unavailability": 0.03148091634114583,
+   "false_quarantines_per_node_hour": 119.2470452724359,
+   "lies_delivered_per_round": 0.001312255859375,
+   "lies_per_round": 0.373026123046875,
+   "attacker_quarantined": 0.997821044921875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_W",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0016666666666666668,
+    0.0033333333333333335,
+    0.01625,
+    0.03375
+   ],
+   "onset_rate": 1.6682942708333332e-05,
+   "onset_rate_ci": [
+    1.3441712641810406e-05,
+    2.0705721606890885e-05
+   ],
+   "onsets": 82,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 59941.46341463415,
+   "mttfi_rounds_lower": 48295.82948063974,
+   "unavailability": 0.0001336669921875,
+   "false_quarantines_per_node_hour": 0.5133213141025641,
+   "lies_delivered_per_round": 0.00263916015625,
+   "lies_per_round": 0.373026123046875,
+   "attacker_quarantined": 0.9947650146484375,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_W",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.8064471435546875,
+   "lies_per_round": 0.9822735595703125,
+   "attacker_quarantined": 0.1936767578125,
+   "attack_detected_runs": 0.98375
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_W",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.371627197265625,
+   "lies_per_round": 0.373026123046875,
+   "attacker_quarantined": 0.0118731689453125,
+   "attack_detected_runs": 0.82
+  },
+  {
+   "q": 0.001,
+   "attacker": "aware_W",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "onset_rate": 0.0,
+   "onset_rate_ci": [
+    0.0,
+    6.103515625e-07
+   ],
+   "onsets": 0,
+   "node_rounds": 4915200,
+   "mttfi_rounds": null,
+   "mttfi_rounds_lower": 1638400.0,
+   "unavailability": 0.0,
+   "false_quarantines_per_node_hour": 0.0,
+   "lies_delivered_per_round": 0.218203125,
+   "lies_per_round": 0.21821044921875,
+   "attacker_quarantined": 0.010521850585937501,
+   "attack_detected_runs": 0.835
+  },
+  {
+   "q": 0.04,
+   "attacker": "naive",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.92625,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.1279022216796875,
+   "onset_rate_ci": [
+    0.12760725077913934,
+    0.1281977742248109
+   ],
+   "onsets": 628665,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 7.818472477392569,
+   "mttfi_rounds_lower": 7.800447441828236,
+   "unavailability": 0.7279850260416667,
+   "false_quarantines_per_node_hour": 1263.9097556089744,
+   "lies_delivered_per_round": 0.00048828125,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 1.0,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "naive",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.2633333333333333,
+    0.73375,
+    0.9945833333333334,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.019266357421875,
+   "onset_rate_ci": [
+    0.019145208964445822,
+    0.019388257338011017
+   ],
+   "onsets": 94698,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 51.90394728505353,
+   "mttfi_rounds_lower": 51.577611260578976,
+   "unavailability": 0.15135843912760416,
+   "false_quarantines_per_node_hour": 523.7818008814103,
+   "lies_delivered_per_round": 0.0009765625,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.99951171875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "naive",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0075,
+    0.03666666666666667,
+    0.14708333333333334,
+    0.4841666666666667,
+    0.7233333333333334
+   ],
+   "onset_rate": 0.0006343587239583333,
+   "onset_rate_ci": [
+    0.0006124861165262504,
+    0.0006570119147026646
+   ],
+   "onsets": 3118,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1576.3951250801797,
+   "mttfi_rounds_lower": 1522.0424129637847,
+   "unavailability": 0.010003662109375002,
+   "false_quarantines_per_node_hour": 19.262069310897434,
+   "lies_delivered_per_round": 0.00095458984375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.99953369140625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "naive",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04791666666666667,
+    0.1925,
+    0.6083333333333333,
+    0.8358333333333333
+   ],
+   "onset_rate": 0.0009096272786458334,
+   "onset_rate_ci": [
+    0.0008833631373689905,
+    0.000936671572948933
+   ],
+   "onsets": 4471,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1099.351375531201,
+   "mttfi_rounds_lower": 1067.6100661960834,
+   "unavailability": 0.013929036458333334,
+   "false_quarantines_per_node_hour": 26.68018830128205,
+   "lies_delivered_per_round": 0.00095458984375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.99953369140625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "naive",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04833333333333333,
+    0.19333333333333333,
+    0.6116666666666667,
+    0.83875
+   ],
+   "onset_rate": 0.0009273274739583333,
+   "onset_rate_ci": [
+    0.0009008055331580167,
+    0.0009546295401168496
+   ],
+   "onsets": 4558,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1078.3677051338307,
+   "mttfi_rounds_lower": 1047.5267713563494,
+   "unavailability": 0.014139404296875002,
+   "false_quarantines_per_node_hour": 26.961889022435898,
+   "lies_delivered_per_round": 0.00095458984375,
+   "lies_per_round": 1.0,
+   "attacker_quarantined": 0.99953369140625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "bernoulli_0.25",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.92625,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.1279022216796875,
+   "onset_rate_ci": [
+    0.12760725077913934,
+    0.1281977742248109
+   ],
+   "onsets": 628665,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 7.818472477392569,
+   "mttfi_rounds_lower": 7.800447441828236,
+   "unavailability": 0.7279850260416667,
+   "false_quarantines_per_node_hour": 1263.9097556089744,
+   "lies_delivered_per_round": 0.00708984375,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.97231201171875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "bernoulli_0.25",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.2633333333333333,
+    0.73375,
+    0.9945833333333334,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.019266357421875,
+   "onset_rate_ci": [
+    0.019145208964445822,
+    0.019388257338011017
+   ],
+   "onsets": 94698,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 51.90394728505353,
+   "mttfi_rounds_lower": 51.577611260578976,
+   "unavailability": 0.15135843912760416,
+   "false_quarantines_per_node_hour": 523.7818008814103,
+   "lies_delivered_per_round": 0.101324462890625,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.5956256103515625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0075,
+    0.03666666666666667,
+    0.14708333333333334,
+    0.4841666666666667,
+    0.7233333333333334
+   ],
+   "onset_rate": 0.0006343587239583333,
+   "onset_rate_ci": [
+    0.0006124861165262504,
+    0.0006570119147026646
+   ],
+   "onsets": 3118,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1576.3951250801797,
+   "mttfi_rounds_lower": 1522.0424129637847,
+   "unavailability": 0.010003662109375002,
+   "false_quarantines_per_node_hour": 19.262069310897434,
+   "lies_delivered_per_round": 0.03089599609375,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.87739501953125,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04791666666666667,
+    0.1925,
+    0.6083333333333333,
+    0.8358333333333333
+   ],
+   "onset_rate": 0.0009096272786458334,
+   "onset_rate_ci": [
+    0.0008833631373689905,
+    0.000936671572948933
+   ],
+   "onsets": 4471,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1099.351375531201,
+   "mttfi_rounds_lower": 1067.6100661960834,
+   "unavailability": 0.013929036458333334,
+   "false_quarantines_per_node_hour": 26.68018830128205,
+   "lies_delivered_per_round": 0.0263641357421875,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.8955047607421875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "bernoulli_0.25",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04833333333333333,
+    0.19333333333333333,
+    0.6116666666666667,
+    0.83875
+   ],
+   "onset_rate": 0.0009273274739583333,
+   "onset_rate_ci": [
+    0.0009008055331580167,
+    0.0009546295401168496
+   ],
+   "onsets": 4558,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1078.3677051338307,
+   "mttfi_rounds_lower": 1047.5267713563494,
+   "unavailability": 0.014139404296875002,
+   "false_quarantines_per_node_hour": 26.961889022435898,
+   "lies_delivered_per_round": 0.00859375,
+   "lies_per_round": 0.2503582763671875,
+   "attacker_quarantined": 0.96631103515625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_TW",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.92625,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.1279022216796875,
+   "onset_rate_ci": [
+    0.12760725077913934,
+    0.1281977742248109
+   ],
+   "onsets": 628665,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 7.818472477392569,
+   "mttfi_rounds_lower": 7.800447441828236,
+   "unavailability": 0.7279850260416667,
+   "false_quarantines_per_node_hour": 1263.9097556089744,
+   "lies_delivered_per_round": 0.021883544921875,
+   "lies_per_round": 0.2052642822265625,
+   "attacker_quarantined": 0.964598388671875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_TW",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.2633333333333333,
+    0.73375,
+    0.9945833333333334,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.019266357421875,
+   "onset_rate_ci": [
+    0.019145208964445822,
+    0.019388257338011017
+   ],
+   "onsets": 94698,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 51.90394728505353,
+   "mttfi_rounds_lower": 51.577611260578976,
+   "unavailability": 0.15135843912760416,
+   "false_quarantines_per_node_hour": 523.7818008814103,
+   "lies_delivered_per_round": 0.1586138916015625,
+   "lies_per_round": 0.2052642822265625,
+   "attacker_quarantined": 0.3280712890625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_TW",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0075,
+    0.0375,
+    0.15083333333333335,
+    0.47375,
+    0.7241666666666666
+   ],
+   "onset_rate": 0.0006331380208333333,
+   "onset_rate_ci": [
+    0.0006112868248489402,
+    0.0006557698020381167
+   ],
+   "onsets": 3112,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1579.4344473007714,
+   "mttfi_rounds_lower": 1524.9253577886998,
+   "unavailability": 0.009896036783854166,
+   "false_quarantines_per_node_hour": 19.23076923076923,
+   "lies_delivered_per_round": 0.2729949951171875,
+   "lies_per_round": 0.29598388671875,
+   "attacker_quarantined": 0.38835205078125,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_TW",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04875,
+    0.19666666666666666,
+    0.5970833333333333,
+    0.8366666666666667
+   ],
+   "onset_rate": 0.0009079996744791667,
+   "onset_rate_ci": [
+    0.0008817593646479653,
+    0.000935020139880814
+   ],
+   "onsets": 4463,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1101.3219807304504,
+   "mttfi_rounds_lower": 1069.495679662546,
+   "unavailability": 0.013837483723958332,
+   "false_quarantines_per_node_hour": 26.655148237179485,
+   "lies_delivered_per_round": 0.194326171875,
+   "lies_per_round": 0.2052642822265625,
+   "attacker_quarantined": 0.4919537353515625,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_TW",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.049166666666666664,
+    0.1975,
+    0.6008333333333333,
+    0.8391666666666666
+   ],
+   "onset_rate": 0.0009256998697916666,
+   "onset_rate_ci": [
+    0.0008992015311329155,
+    0.0009529783363528067
+   ],
+   "onsets": 4550,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1080.2637362637363,
+   "mttfi_rounds_lower": 1049.34179703093,
+   "unavailability": 0.0140478515625,
+   "false_quarantines_per_node_hour": 26.930588942307693,
+   "lies_delivered_per_round": 0.136876220703125,
+   "lies_per_round": 0.141990966796875,
+   "attacker_quarantined": 0.5110418701171875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_W",
+   "agg": "and",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.92625,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.1279022216796875,
+   "onset_rate_ci": [
+    0.12760725077913934,
+    0.1281977742248109
+   ],
+   "onsets": 628665,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 7.818472477392569,
+   "mttfi_rounds_lower": 7.800447441828236,
+   "unavailability": 0.7279850260416667,
+   "false_quarantines_per_node_hour": 1263.9097556089744,
+   "lies_delivered_per_round": 0.0173260498046875,
+   "lies_per_round": 0.25579833984375,
+   "attacker_quarantined": 0.96916748046875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_W",
+   "agg": "and_db",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.2633333333333333,
+    0.73375,
+    0.9945833333333334,
+    1.0,
+    1.0
+   ],
+   "onset_rate": 0.019266357421875,
+   "onset_rate_ci": [
+    0.019145208964445822,
+    0.019388257338011017
+   ],
+   "onsets": 94698,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 51.90394728505353,
+   "mttfi_rounds_lower": 51.577611260578976,
+   "unavailability": 0.15135843912760416,
+   "false_quarantines_per_node_hour": 523.7818008814103,
+   "lies_delivered_per_round": 0.045087890625,
+   "lies_per_round": 0.25579833984375,
+   "attacker_quarantined": 0.776785888671875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_W",
+   "agg": "ema",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.0075,
+    0.0375,
+    0.15083333333333335,
+    0.47375,
+    0.7241666666666666
+   ],
+   "onset_rate": 0.0006331380208333333,
+   "onset_rate_ci": [
+    0.0006112868248489402,
+    0.0006557698020381167
+   ],
+   "onsets": 3112,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1579.4344473007714,
+   "mttfi_rounds_lower": 1524.9253577886998,
+   "unavailability": 0.009896036783854166,
+   "false_quarantines_per_node_hour": 19.23076923076923,
+   "lies_delivered_per_round": 0.440865478515625,
+   "lies_per_round": 0.4807843017578125,
+   "attacker_quarantined": 0.5556610107421875,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_W",
+   "agg": "ema_p",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.04875,
+    0.19666666666666666,
+    0.5970833333333333,
+    0.8366666666666667
+   ],
+   "onset_rate": 0.0009079996744791667,
+   "onset_rate_ci": [
+    0.0008817593646479653,
+    0.000935020139880814
+   ],
+   "onsets": 4463,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1101.3219807304504,
+   "mttfi_rounds_lower": 1069.495679662546,
+   "unavailability": 0.013837483723958332,
+   "false_quarantines_per_node_hour": 26.655148237179485,
+   "lies_delivered_per_round": 0.247296142578125,
+   "lies_per_round": 0.25579833984375,
+   "attacker_quarantined": 0.40124328613281257,
+   "attack_detected_runs": 1.0
+  },
+  {
+   "q": 0.04,
+   "attacker": "aware_W",
+   "agg": "ema_p_long",
+   "horizons": [
+    16,
+    64,
+    256,
+    1024,
+    2048
+   ],
+   "false_iso": [
+    0.009583333333333333,
+    0.049166666666666664,
+    0.1975,
+    0.6008333333333333,
+    0.8391666666666666
+   ],
+   "onset_rate": 0.0009256998697916666,
+   "onset_rate_ci": [
+    0.0008992015311329155,
+    0.0009529783363528067
+   ],
+   "onsets": 4550,
+   "node_rounds": 4915200,
+   "mttfi_rounds": 1080.2637362637363,
+   "mttfi_rounds_lower": 1049.34179703093,
+   "unavailability": 0.0140478515625,
+   "false_quarantines_per_node_hour": 26.930588942307693,
+   "lies_delivered_per_round": 0.1605902099609375,
+   "lies_per_round": 0.163636474609375,
+   "attacker_quarantined": 0.42215087890625,
+   "attack_detected_runs": 1.0
+  }
+ ],
+ "readmit_theta": 0.9,
+ "readmit_r": 8
+}

@@ -1,0 +1,1946 @@
+{
+ "experiment": "e6_uneven",
+ "generated": "2026-10-11 06:13:29",
+ "rows": [
+  {
+   "profile": "uniform",
+   "q_vec": [
+    0.04,
+    0.04,
+    0.04,
+    0.04
+   ],
+   "agg": "and",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.04,
+     0.04,
+     0.04,
+     0.04
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.15041145833333333,
+   "fpr_ci": [
+    0.14887473958333333,
+    0.15197395833333333
+   ],
+   "false_iso": 0.92875,
+   "false_iso_ci": [
+    0.9240088350919304,
+    0.9332167384278001
+   ],
+   "false_iso_count": 11145,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "uniform",
+   "q_vec": [
+    0.04,
+    0.04,
+    0.04,
+    0.04
+   ],
+   "agg": "and_db",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.04,
+     0.04,
+     0.04,
+     0.04
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and_db",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 2.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 2.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.021135416666666663,
+   "fpr_ci": [
+    0.020411328125,
+    0.021895833333333333
+   ],
+   "false_iso": 0.26108333333333333,
+   "false_iso_ci": [
+    0.25330194267359635,
+    0.2690176454156034
+   ],
+   "false_iso_count": 3133,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "uniform",
+   "q_vec": [
+    0.04,
+    0.04,
+    0.04,
+    0.04
+   ],
+   "agg": "kof4_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.04,
+     0.04,
+     0.04,
+     0.04
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "kof4_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.009635416666666664,
+   "fpr_ci": [
+    0.009166666666666668,
+    0.010114583333333331
+   ],
+   "false_iso": 0.13933333333333334,
+   "false_iso_ci": [
+    0.13325268777602012,
+    0.14564482783264965
+   ],
+   "false_iso_count": 1672,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "uniform",
+   "q_vec": [
+    0.04,
+    0.04,
+    0.04,
+    0.04
+   ],
+   "agg": "ema",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.04,
+     0.04,
+     0.04,
+     0.04
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.9585,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.9565,
+   "tpr2_steady": 1.0,
+   "fpr": 0.000546875,
+   "fpr_ci": [
+    0.0004375,
+    0.00065625
+   ],
+   "false_iso": 0.008,
+   "false_iso_ci": [
+    0.006556031699140694,
+    0.009758878687547514
+   ],
+   "false_iso_count": 96,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.7782640482252107,
+   "detW1": 0.6735
+  },
+  {
+   "profile": "uniform",
+   "q_vec": [
+    0.04,
+    0.04,
+    0.04,
+    0.04
+   ],
+   "agg": "ema_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.04,
+     0.04,
+     0.04,
+     0.04
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.9585,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.9565,
+   "tpr2_steady": 1.0,
+   "fpr": 0.00096875,
+   "fpr_ci": [
+    0.0007864583333333332,
+    0.0011666666666666665
+   ],
+   "false_iso": 0.010916666666666667,
+   "false_iso_ci": [
+    0.00920770451085125,
+    0.012938672362365736
+   ],
+   "false_iso_count": 131,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.7782640482252107,
+   "detW1": 1.0
+  },
+  {
+   "profile": "P-heavy",
+   "q_vec": [
+    0.01,
+    0.13,
+    0.01,
+    0.01
+   ],
+   "agg": "and",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.13,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.15621875,
+   "fpr_ci": [
+    0.15462994791666665,
+    0.157854296875
+   ],
+   "false_iso": 0.9358333333333333,
+   "false_iso_ci": [
+    0.9313078428506878,
+    0.9400798635648984
+   ],
+   "false_iso_count": 11230,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "P-heavy",
+   "q_vec": [
+    0.01,
+    0.13,
+    0.01,
+    0.01
+   ],
+   "agg": "and_db",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.13,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and_db",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 2.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 2.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.022583333333333337,
+   "fpr_ci": [
+    0.021854166666666668,
+    0.023348958333333336
+   ],
+   "false_iso": 0.2763333333333333,
+   "false_iso_ci": [
+    0.2684047429397915,
+    0.28440508420754435
+   ],
+   "false_iso_count": 3316,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "P-heavy",
+   "q_vec": [
+    0.01,
+    0.13,
+    0.01,
+    0.01
+   ],
+   "agg": "kof4_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.13,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "kof4_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.012041666666666666,
+   "fpr_ci": [
+    0.011218619791666667,
+    0.012885546874999999
+   ],
+   "false_iso": 0.10558333333333333,
+   "false_iso_ci": [
+    0.10021063105109795,
+    0.11120848664202454
+   ],
+   "false_iso_count": 1267,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "P-heavy",
+   "q_vec": [
+    0.01,
+    0.13,
+    0.01,
+    0.01
+   ],
+   "agg": "ema",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.13,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.992,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.99,
+   "tpr2_steady": 1.0,
+   "fpr": 1.5625e-05,
+   "fpr_ci": [
+    0.0,
+    3.645833333333333e-05
+   ],
+   "false_iso": 0.00025,
+   "false_iso_ci": [
+    8.502458199182523e-05,
+    0.0007348462833484838
+   ],
+   "false_iso_count": 3,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.8427984791197141,
+   "detW1": 0.237
+  },
+  {
+   "profile": "P-heavy",
+   "q_vec": [
+    0.01,
+    0.13,
+    0.01,
+    0.01
+   ],
+   "agg": "ema_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.13,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.992,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.99,
+   "tpr2_steady": 1.0,
+   "fpr": 0.0080625,
+   "fpr_ci": [
+    0.007317708333333334,
+    0.008812630208333332
+   ],
+   "false_iso": 0.04808333333333333,
+   "false_iso_ci": [
+    0.044397927338875084,
+    0.0520579939055372
+   ],
+   "false_iso_count": 577,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.8427984791197141,
+   "detW1": 1.0
+  },
+  {
+   "profile": "E-heavy",
+   "q_vec": [
+    0.13,
+    0.01,
+    0.01,
+    0.01
+   ],
+   "agg": "and",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.13,
+     0.01,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.1559375,
+   "fpr_ci": [
+    0.15434361979166666,
+    0.15759388020833334
+   ],
+   "false_iso": 0.9346666666666666,
+   "false_iso_ci": [
+    0.9301046648331085,
+    0.9389504549878661
+   ],
+   "false_iso_count": 11216,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "E-heavy",
+   "q_vec": [
+    0.13,
+    0.01,
+    0.01,
+    0.01
+   ],
+   "agg": "and_db",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.13,
+     0.01,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and_db",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 2.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 2.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.022796875,
+   "fpr_ci": [
+    0.0220625,
+    0.02352096354166667
+   ],
+   "false_iso": 0.2786666666666667,
+   "false_iso_ci": [
+    0.27071659482308974,
+    0.2867584055134692
+   ],
+   "false_iso_count": 3344,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "E-heavy",
+   "q_vec": [
+    0.13,
+    0.01,
+    0.01,
+    0.01
+   ],
+   "agg": "kof4_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.13,
+     0.01,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "kof4_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.012401041666666668,
+   "fpr_ci": [
+    0.011572916666666667,
+    0.013219010416666665
+   ],
+   "false_iso": 0.109,
+   "false_iso_ci": [
+    0.10354868722604497,
+    0.11470157692272552
+   ],
+   "false_iso_count": 1308,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "E-heavy",
+   "q_vec": [
+    0.13,
+    0.01,
+    0.01,
+    0.01
+   ],
+   "agg": "ema",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.13,
+     0.01,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.873,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.8605,
+   "tpr2_steady": 1.0,
+   "fpr": 0.0008125,
+   "fpr_ci": [
+    0.0006717447916666666,
+    0.0009531249999999999
+   ],
+   "false_iso": 0.011333333333333334,
+   "false_iso_ci": [
+    0.009589624970265982,
+    0.013389818543883691
+   ],
+   "false_iso_count": 136,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.7504436682922633,
+   "detW1": 0.883
+  },
+  {
+   "profile": "E-heavy",
+   "q_vec": [
+    0.13,
+    0.01,
+    0.01,
+    0.01
+   ],
+   "agg": "ema_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.13,
+     0.01,
+     0.01,
+     0.01
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.873,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.8605,
+   "tpr2_steady": 1.0,
+   "fpr": 0.008833333333333332,
+   "fpr_ci": [
+    0.008072786458333333,
+    0.009630338541666665
+   ],
+   "false_iso": 0.056666666666666664,
+   "false_iso_ci": [
+    0.05267000155918272,
+    0.06094709248844282
+   ],
+   "false_iso_count": 680,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.7504436682922633,
+   "detW1": 1.0
+  },
+  {
+   "profile": "W-heavy",
+   "q_vec": [
+    0.01,
+    0.01,
+    0.01,
+    0.13
+   ],
+   "agg": "and",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.01,
+     0.01,
+     0.13
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.15511979166666665,
+   "fpr_ci": [
+    0.15349453124999998,
+    0.15669804687500002
+   ],
+   "false_iso": 0.9325833333333333,
+   "false_iso_ci": [
+    0.9279571279090267,
+    0.9369326587072845
+   ],
+   "false_iso_count": 11191,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "W-heavy",
+   "q_vec": [
+    0.01,
+    0.01,
+    0.01,
+    0.13
+   ],
+   "agg": "and_db",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.01,
+     0.01,
+     0.13
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "and_db",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 2.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 2.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.02265625,
+   "fpr_ci": [
+    0.021942447916666667,
+    0.02342734375
+   ],
+   "false_iso": 0.2775,
+   "false_iso_ci": [
+    0.26956063499238736,
+    0.28558177874956014
+   ],
+   "false_iso_count": 3330,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "W-heavy",
+   "q_vec": [
+    0.01,
+    0.01,
+    0.01,
+    0.13
+   ],
+   "agg": "kof4_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.01,
+     0.01,
+     0.13
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "kof4_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.0,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.0,
+   "tpr2_steady": 1.0,
+   "fpr": 0.012359375,
+   "fpr_ci": [
+    0.011510416666666665,
+    0.013213541666666667
+   ],
+   "false_iso": 0.10725,
+   "false_iso_ci": [
+    0.10183873129537312,
+    0.1129126529614801
+   ],
+   "false_iso_count": 1287,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": NaN,
+   "detW1": 1.0
+  },
+  {
+   "profile": "W-heavy",
+   "q_vec": [
+    0.01,
+    0.01,
+    0.01,
+    0.13
+   ],
+   "agg": "ema",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.01,
+     0.01,
+     0.13
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.992,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.99,
+   "tpr2_steady": 1.0,
+   "fpr": 0.00021875,
+   "fpr_ci": [
+    0.00015625,
+    0.00028645833333333333
+   ],
+   "false_iso": 0.0035,
+   "false_iso_ci": [
+    0.0025905155163844446,
+    0.00472727514823079
+   ],
+   "false_iso_count": 42,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.8054740200624562,
+   "detW1": 0.232
+  },
+  {
+   "profile": "W-heavy",
+   "q_vec": [
+    0.01,
+    0.01,
+    0.01,
+    0.13
+   ],
+   "agg": "ema_p",
+   "config": {
+    "runs": 2000,
+    "seed": 0,
+    "rounds": 16,
+    "n_legit": 6,
+    "n_attack": 2,
+    "n_fog": 2,
+    "q": 0.04,
+    "q_vec": [
+     0.01,
+     0.01,
+     0.01,
+     0.13
+    ],
+    "q_corr": 0.0,
+    "corr_factors": 4,
+    "q_node": 0.0,
+    "markov": null,
+    "markov_scope": "network",
+    "pdr_ok": [
+     92.0,
+     100.0
+    ],
+    "pdr_bad": [
+     60.0,
+     89.0
+    ],
+    "profile": "TW",
+    "attacker": "bernoulli",
+    "p_lie": 1.0,
+    "period": 3,
+    "aware_margin": 0.02,
+    "agg": "ema_p",
+    "alpha": 0.5,
+    "theta": 0.7,
+    "sigma_theta": 0.0,
+    "persist_m": 4,
+    "persist_w": 8,
+    "persist2_m": 0,
+    "persist2_w": 32,
+    "debounce_r": 2,
+    "kof": 2,
+    "beta_lambda": 0.5,
+    "beta_theta": 0.38,
+    "n_rep": 1,
+    "k": null,
+    "c_corrupt": 0,
+    "frame_legit": false,
+    "withhold": false,
+    "eta": 0.0,
+    "rho": 0.0,
+    "p_miss": 0.0,
+    "miss_rule": "quorum",
+    "suppress": 0.0,
+    "readmit_theta": 0.9,
+    "readmit_r": 8,
+    "keep": false
+   },
+   "det1": 1.0,
+   "det1_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd1_rounds": 1.992,
+   "tpr1_steady": 1.0,
+   "det2": 1.0,
+   "det2_ci": [
+    0.9980828823994873,
+    1.0
+   ],
+   "ttd2_rounds": 1.99,
+   "tpr2_steady": 1.0,
+   "fpr": 0.008510416666666666,
+   "fpr_ci": [
+    0.0077083333333333335,
+    0.009328515624999997
+   ],
+   "false_iso": 0.051166666666666666,
+   "false_iso_ci": [
+    0.047365982629766656,
+    0.05525463175754748
+   ],
+   "false_iso_count": 614,
+   "node_runs": 12000,
+   "zero_upper": 0.00025,
+   "tau_min_legit_mean": 0.8054740200624562,
+   "detW1": 1.0
+  }
+ ]
+}

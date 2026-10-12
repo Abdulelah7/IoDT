@@ -1,0 +1,358 @@
+% ====================================================================
+\section{The Proposed Trust Model}
+\label{sec:proposedModel}
+% ====================================================================
+This section presents the three extensions to the IoDT
+model~\cite{soula2024iodt}, whose architecture is shown in
+Fig.~\ref{fig:architecture}.  Twin replicas run Extension~I, a quorum
+over their signed votes (Extension~II) decides on the real-time path,
+and verdicts and votes are committed to a signed Merkle audit log off
+that path (Extension~III).
+
+\Figure[!t](topskip=0pt,botskip=0pt,midskip=0pt)[width=\textwidth]{figs/fig_architecture.png}
+{Architecture of the proposed IoDT trust pipeline with its three extensions.\label{fig:architecture}}
+
+\subsection{Extension I: Continuous Trust Score}
+\label{subsec:ext1-math}
+The four factors are mapped to $[0,1]$ and combined with non-negative
+weights that sum to one:
+\begin{equation}
+s_{t}(i) = w_{E}E_{t}(i) + w_{P}\frac{P_{t}(i)}{100}
+         + w_{T}T_{t}(i) + w_{W}W_{t}(i).
+\label{eq:weighted_score}
+\end{equation}
+All experiments use $w_{E}=w_{P}=0.30$ and $w_{T}=w_{W}=0.20$, which
+put slightly more weight on the physical factors than on the
+notification-driven ones.  A single bad round should not condemn a
+node that has otherwise behaved well, so the score is smoothed by an
+exponential moving average,
+\begin{equation}
+\tau_{t}(i) = \alpha\,s_{t}(i) + (1-\alpha)\,\tau_{t-1}(i),
+\qquad \tau_{0}(i)=1,
+\label{eq:ema}
+\end{equation}
+and the node is flagged when $\tau_t(i)<\theta$.  The defaults are
+$\alpha=0.5$ and $\theta=0.70$, selected on a separate tuning seed
+(Section~\ref{sec:setup}).
+
+Smoothing has a blind spot: a weighted score cannot react to an
+attacker that always fails the \emph{same} low-weight factor.  An
+attacker that fails only $W$ keeps $s_t\in[0.776,0.80]$, and, absent
+congestion, its EMA never falls below $0.70$.  Extension~I therefore adds a
+\emph{per-factor persistence check}: the node is also flagged when any
+single factor has failed in at least $m$ of the last $w$ rounds.
+Congestion scatters failures across factors and rounds, whereas a
+liar fails the same factor again and again.  The defaults are $m=4$
+and $w=8$.  A second, longer window ($m_2$ of $w_2$ rounds) can be
+added against rule-aware attackers (Section~\ref{sec:res-stealth}); it
+is off by default.  Algorithm~\ref{alg:ema} gives the complete
+per-round update.
+
+\begin{algorithm}[!t]
+\caption{Extension~I trust update for node $i$ at round $t$.}
+\label{alg:ema}
+\noindent\textbf{Input:} factor scores $(E_t,P_t,T_t,W_t)$; weights;
+prior trust $\tau_{t-1}(i)$; failure counters of the last $w$ (and
+$w_2$) rounds; $\alpha$, $\theta$, $m$, $w$ (and $m_2$, $w_2$).
+
+\noindent\textbf{Procedure:}
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item $s_t \gets w_E E_t + w_P (P_t/100) + w_T T_t + w_W W_t$.
+  \item $\tau_t(i) \gets \alpha\,s_t + (1-\alpha)\,\tau_{t-1}(i)$.
+  \item Update, for each factor, the number of failures in rounds
+        $t-w+1,\dots,t$ (a factor fails when it is $0$, or when
+        $P_t<\Theta_{\mathrm{PDR}}$).
+  \item If $\tau_t(i)<\theta$, or some factor failed in $\ge m$ of the
+        last $w$ rounds (or in $\ge m_2$ of the last $w_2$), return
+        \textsc{flag}; else return \textsc{trust}.
+\end{enumerate}
+\end{algorithm}
+
+\subsubsection{False-positive analysis}
+The analysis rests on three assumptions, and the experiments test what
+happens when the first two are relaxed.
+\begin{itemize}
+\item[(A1)] \emph{Independence.}  For an honest node, factor
+corruptions are independent across factors and rounds.
+\item[(A2)] \emph{Symmetric corruption.}  Each factor is corrupted
+with probability $q$; a corrupted binary factor becomes $0$ and a
+corrupted PDR falls below $\Theta_{\mathrm{PDR}}$.
+\item[(A3)] \emph{Healthy-link PDR.}  An uncorrupted PDR lies in
+$[\underline{P},100]$; the simulator uses $\underline{P}=92\%$.
+\end{itemize}
+Under (A1)--(A2) the binary AND (\ref{eq:binary_and}) flags an honest
+node whenever any factor is corrupted, so its per-round FPR is
+\begin{equation}
+\mathrm{FPR}_{\mathrm{AND}}(q) = 1-(1-q)^{4} = 4q + O(q^{2}),
+\label{eq:fpr_and}
+\end{equation}
+and by the same counting any rule that flags only after two failures
+--- the AND required to fail in two consecutive rounds, or two of the
+four factors required to fail in the same round --- errs at rate
+$\Theta(q^{2})$.  In the evaluation the 2-of-4 rule is combined with
+the persistence check below, which keeps its order at $\Theta(q^{2})$
+and lets it see a liar that fails only one factor.  These rules serve as delay-matched baselines in
+Section~\ref{sec:resultsAndDiscussion}.  The EMA needs three failures.
+
+\begin{proposition}[FPR of the EMA score]\label{prop:fpr_ema}
+A node is flagged by the EMA at round $t$ if and only if
+\begin{equation}
+s_t < s^{\star}=\frac{\theta-(1-\alpha)\,\tau_{t-1}}{\alpha}.
+\label{eq:sstar}
+\end{equation}
+With the default weights, $\alpha=0.5$ and $\theta=0.70$, a flag
+requires at least three factor failures within the last $L=6$ rounds,
+so under (A1)--(A3)
+\begin{equation}
+\mathrm{FPR}_{\mathrm{EMA}}(q) \le \binom{4L}{3}q^{3},\qquad
+\mathrm{FPR}_{\mathrm{EMA}}(q)=\Theta(q^{3}).
+\end{equation}
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:proofs}.
+\end{proof}
+
+The cubic order depends on the parameters and on (A1).  At
+$\alpha\geq0.6$ (with $\theta=0.70$) or $\theta\geq0.75$ (with
+$\alpha=0.5$), two failures in one round can already cross the
+threshold and the order falls to $\Theta(q^{2})$
+(Appendix~\ref{app:proofs}).  When one congestion event fails several
+factors of a node at once, (A1) fails across factors, and the order is
+again $\Theta(q^{2})$ (Section~\ref{sec:res-robust}).  The price of
+smoothing is one round of delay: without congestion, a node that lies
+in every round scores $s_t<0.60$, so from $\tau_0=1$ its EMA is below
+$0.70$ after two rounds, whereas the AND flags it in the first.
+
+The persistence check adds false positives at a controlled rate and
+catches lies that the EMA cannot see.
+
+\begin{proposition}[Persistence check]\label{prop:persist}
+Under (A1)--(A2) the probability that the persistence check flags an
+honest node in a given round is at most
+$4\binom{w}{m}q^{m}$ ($7.2\times10^{-4}$ at $m=4$, $w=8$, $q=0.04$).
+A node whose lies fail a given factor independently in each round with
+probability $p$ is flagged within any window of $w$ rounds with
+probability at least $\Pr[\mathrm{Bin}(w,p)\geq m]$; for $p=1$ it is
+flagged by round $m$.  A node that keeps at most $m-1$ lies in every
+window of $w$ rounds is never flagged by the check: its \emph{lie
+budget} is $(m-1)/w$, or $\min\{(m-1)/w,(m_2-1)/w_2\}$ with a second
+window.
+\end{proposition}
+\begin{proof}
+See Appendix~\ref{app:proofs}.
+\end{proof}
+
+% ====================================================================
+\subsection{Extension II: Multi-Twin Voting}
+\label{sec:ext2}
+% ====================================================================
+A single twin is a single point of trust: if it is corrupted, the
+node it watches is never flagged.  Extension~II deploys $n$ replicas
+of each twin and decides by a quorum of their signed votes; the
+reported configuration is $n=5$, $k=3$.  This is one-shot voting over
+signed verdicts in the sense of Byzantine quorum
+systems~\cite{malkhi1998byzantine}, not a full Byzantine-fault-tolerant
+agreement protocol such as PBFT~\cite{castro2002practical}: there is no
+multi-phase commit, view change or total order on operations.  The
+extension relies on the following assumptions.
+\begin{itemize}
+\item[(B1)] \emph{Independent hosting.}  The replicas run on
+administratively independent hosts (different fog sites or cloud
+availability zones), so compromising one host does not compromise the
+others.
+\item[(B2)] \emph{Authenticated, bound votes.}  In every round each
+replica signs one vector of verdicts for all the nodes it watches,
+bound to its identity, the round number and the current key epoch
+(ECDSA over secp256k1 in our implementation).  Keys are rotated by
+starting a new epoch, which invalidates signatures from retired keys.
+\item[(B3)] \emph{Bounded delay.}  Votes from honest replicas arrive
+within a known bound $\Delta$; a vote that arrives later is treated as
+missing.
+\item[(B4)] \emph{Identical evidence.}  The fog node forwards the same
+evidence to every replica, so honest replicas reach identical
+verdicts.
+\item[(B5)] \emph{Adversary budget.}  At most $c\le k-1$ replicas are
+corrupted.
+\end{itemize}
+Each replica runs Algorithm~\ref{alg:ema}, signs its vote vector and
+sends it to the trust engine, which verifies the signatures and
+applies the \emph{quorum rule} of Algorithm~\ref{alg:vote}:
+\textsc{trust} if at least $k$ valid votes say \textsc{trust},
+\textsc{flag} if at least $n-k+1$ say \textsc{flag}, and otherwise the
+previous verdict is kept and an availability alarm raised.
+The engine forwards the verdict to the fog node, which enforces it
+and, being trusted (Table~\ref{tab:threats}), appends the verdict it
+enforced to the off-chain store of Extension~III.  With all
+$n=2k-1$ votes present exactly one quorum is reached, so the rule
+coincides with ``flag if fewer than $k$ \textsc{trust} votes''; unlike
+that rule, missing or withheld votes never cause a new isolation,
+although a node that is already isolated stays isolated while no
+quorum forms.  The count is computed by the trust engine, not by a smart
+contract, so no ledger operation lies on the decision path.  The
+verdict and the signed votes are appended to the off-chain store of
+Extension~III.
+
+\begin{algorithm}[!t]
+\caption{Per-round vote for node $i$.}
+\label{alg:vote}
+\noindent\textbf{Input:} evidence $\mathbf{x}_t(i)$; replicas
+$\mathrm{DT}_1,\dots,\mathrm{DT}_n$; quorum $k$; previous verdict.
+
+\noindent\textbf{Procedure:}
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item Each $\mathrm{DT}_r$ runs Algorithm~\ref{alg:ema} on
+        $\mathbf{x}_t(i)$ and signs its vote vector ($\sigma_r$),
+        bound to $(r,t,\text{epoch})$.
+  \item The trust engine waits at most $\Delta$, verifies each received
+        signature and its binding, and counts the \textsc{trust} votes
+        $V_T$ and the \textsc{flag} votes $V_F$.
+  \item If $V_T\geq k$ return \textsc{trust}; if $V_F\geq n-k+1$ return
+        \textsc{flag} to the fog node, which isolates node $i$;
+        otherwise keep the previous verdict and raise an alarm.
+  \item Append the verdict and the signed votes to the off-chain store
+        (input to Algorithm~\ref{alg:anchor}).
+\end{enumerate}
+\end{algorithm}
+
+Under (B3)--(B5) the quorum behaves like one honest twin.  Corrupted
+replicas that always vote \textsc{trust} for an attacker
+(\emph{shielding}) are outvoted whenever the $n-c\geq n-k+1$ honest
+replicas flag it, and corrupted replicas that vote \textsc{flag} for an
+honest node (\emph{framing}) are outvoted whenever the honest replicas
+trust it.  Detection and false positives are therefore those of an
+honest single twin for every $c\le k-1$, whereas a single corrupted
+twin never flags its node and $c\geq k$ corrupted replicas decide every
+verdict.
+
+The trust engine itself is not replicated.  It is trusted to count
+promptly, but not trusted for integrity: every enforced verdict is
+logged with the signed votes behind it, and replicas endorse a header
+of the audit log only if each verdict in it follows from its votes by
+the quorum rule (Section~\ref{sec:ext3}).  An engine that issues an
+unsupported verdict is therefore exposed when the next header is
+committed, within $K$ rounds plus the time to append it, although it
+is not prevented in real time.  Voting defends
+against corrupted twins; it does not help against attackers that lie
+rarely, whose detection is governed by
+Eq.~(\ref{eq:sstar}) and Proposition~\ref{prop:persist}.
+If the replicas receive independent evidence instead of (B4), framing
+replicas can tip honest nodes whose honest replicas disagree
+(Section~\ref{sec:res-ext2}).
+
+% ====================================================================
+\subsection{Extension III: Signed Merkle Audit Log}
+\label{sec:ext3}
+% ====================================================================
+Most blockchain-based trust schemes consult or update the chain while
+a decision is being made (Section~\ref{sec:res-comparison}).  Here the
+verdict is produced by Extensions~I and~II alone, and an audit log
+records it afterwards.  The log is a hash-chained sequence of signed
+headers over Merkle-committed off-chain data, in the tradition of
+tamper-evident logs~\cite{schneier1999secure,crosby2009efficient,laurie2013rfc6962}.
+Its headers can be kept in any append-only store; hosting them on a
+permissioned ledger (for example Hyperledger Fabric with a
+crash-tolerant ordering service among fog peers) adds replicated
+storage and availability against an operator that deletes the log, but
+the tamper evidence of Theorem~\ref{thm:tamper} does not depend on the
+ledger's consensus.
+
+\emph{Content.}  Every round, the per-node event (factor scores,
+$\tau_t$, verdict; $|E|=29$~bytes) and the replicas' signed vote
+vectors are stored off-chain.  Every $K$ rounds the trust engine
+proposes a header that carries the height, the first and last round,
+the numbers of events and votes, the key epoch, the previous header
+hash, and the Merkle roots of the window's events, of its signed votes
+and of the per-node state records ($|R|=13$~bytes per node);
+$|H|=152$~bytes.  The trees follow RFC~6962~\cite{laurie2013rfc6962}:
+leaf and interior hashes are domain-separated, the last node is not
+duplicated, and the leaf count is committed in the header.  Each
+replica \emph{endorses} the header --- signs it --- only after checking
+the off-chain data against it, including that every verdict follows
+from its votes; a header needs $k$ endorsements.  A partial final
+window is committed as well.  Each header therefore occupies
+$|H|+k\,|\sigma|$ bytes in the header store, with $|\sigma|\le73$~bytes per
+endorsement (identifier and DER signature), independent of the number
+of nodes.  Raw evidence never
+leaves the off-chain store, which also limits what the log reveals
+about each node.  A verdict becomes auditable within $K$ rounds plus
+the time to append a header; this delay never affects when the verdict
+itself is issued.  We further assume:
+\begin{itemize}
+\item[(C1)] header hashes are periodically published on an
+independently controlled channel (linked
+time-stamping~\cite{haber1991time}, a KSI hash
+tree~\cite{buldas2013ksi}, an Arbitrum-style state
+commitment~\cite{kalodner2018arbitrum}, or a public-chain anchor);
+\item[(C2)] the signature scheme is existentially unforgeable and
+the hash function is collision resistant.
+\end{itemize}
+
+\begin{algorithm}[!t]
+\caption{Audit-log commit at round $t$.}
+\label{alg:anchor}
+\noindent\textbf{Input:} pending events $\mathcal{E}$ and votes
+$\mathcal{S}$; state records; period $K$; previous header hash
+$H_{\mathrm{prev}}$.
+
+\noindent\textbf{Procedure:}
+\begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+  \item Append the round's events and signed votes (off-chain).
+  \item If $t \bmod K \neq 0$ and the run is not ending, return.
+  \item The trust engine forms the header with
+        $\mathrm{MTH}(\mathcal{E})$, $\mathrm{MTH}(\mathcal{S})$,
+        $\mathrm{MTH}(\text{state})$, counts, epoch and
+        $H_{\mathrm{prev}}$.
+  \item Each replica checks the window (lengths, counts, roots, vote
+        signatures and bindings, verdicts against votes, state against
+        events) and, if it passes, signs the header.
+  \item With $k$ endorsements, append the header; periodically
+        publish its hash externally (C1).
+\end{enumerate}
+\end{algorithm}
+
+\begin{definition}[Verifier]
+Given the headers and the off-chain data, the verifier $V$ checks the
+hash links, at least $k$ valid endorsements from distinct replicas of
+the header's key epoch, record lengths and counts, every Merkle root,
+every vote signature and its binding to replica, round and epoch, that
+each verdict follows from its round's votes by the quorum rule, that
+each state record equals the node's latest event, and, if a checkpoint
+$(j,h^{\star}_j)$ is available, that header $j$ hashes to $h^{\star}_j$.
+\end{definition}
+
+\begin{theorem}[Tamper evidence]\label{thm:tamper}
+Under (C2), let the adversary modify, insert, delete or reorder any
+event, vote or state record of a committed window $B_i$ and recompute
+any hashes it likes.
+\begin{enumerate}
+\item If it holds fewer than $k$ replica signing keys, $V$ rejects
+except with negligible probability.
+\item If it holds $k$ or more keys, it can make $V$ accept if and only
+if no checkpoint $(j,h^{\star}_j)$ with $j\ge i$ was published before
+the modification (up to a hash collision).
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+See Appendix~\ref{app:proofs}.
+\end{proof}
+
+Endorsements, not the checkpoint, are therefore the first line of
+defence; the checkpoint is what defeats an adversary that steals or
+colludes with $k$ replicas.
+
+\subsection{End-to-End Round}
+\label{sec:round}
+Fig.~\ref{fig:sequence} shows how the three extensions interact in one
+round.  Steps 1--7 form the real-time decision path: the fog node
+forwards the evidence to the replicas, each replica runs
+Algorithm~\ref{alg:ema} and signs its vote vector, and the trust engine
+applies Algorithm~\ref{alg:vote} and returns the verdict to the fog
+node, which isolates a flagged node.  Steps 8--11 run afterwards and
+never delay a verdict: events and votes are appended to the off-chain
+store, and every $K$ rounds Algorithm~\ref{alg:anchor} forms a header,
+collects $k$ replica endorsements and appends it; header hashes are
+periodically published on the checkpoint channel (C1).
+
+\Figure[!t](topskip=0pt,botskip=0pt,midskip=0pt)[width=0.92\textwidth]{figs/fig_sequence.png}
+{Message sequence of one round: the decision path (steps 1--7) and the off-path audit-log commit (steps 8--11).\label{fig:sequence}}
+

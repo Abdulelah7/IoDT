@@ -1,0 +1,72 @@
+
+\appendices
+\section{Proofs}
+\label{app:proofs}
+
+\subsection{False-positive rate of the EMA score}
+This subsection proves Proposition~\ref{prop:fpr_ema}.
+Equation (\ref{eq:sstar}) follows by solving $\tau_t<\theta$ for $s_t$
+in (\ref{eq:ema}).  Unrolling (\ref{eq:ema}) over the last $L$ rounds
+gives
+\[
+\tau_t=\alpha\sum_{j=0}^{L-1}(1-\alpha)^{j}s_{t-j}+(1-\alpha)^{L}\tau_{t-L},
+\qquad \tau_{t-L}\ge 0 .
+\]
+With $\underline P=92$ a clean round scores at least $0.976$, a round
+with one failure at least $0.676$ (energy), and a round with two
+failures at least $0.476$ ($E$ with $T$, or $E$ with $W$).  If at most
+two failures occur in rounds $t-L+1,\dots,t$, the sum is smallest when
+both fall in round $t$, and with $\alpha=0.5$ and $L=6$
+\[
+\tau_t\ \ge\ 0.5\cdot0.476+0.976\sum_{j=1}^{5}0.5^{\,j+1}
+\ =\ 0.711\ >\ \theta=0.70,
+\]
+whatever happened before round $t-5$.  A flag therefore needs at
+least three failures among the $4L=24$ factor-rounds of the last six
+rounds, which under (A1)--(A2) has probability at most
+$\binom{24}{3}q^{3}$.  Conversely, $E$, $T$ and $W$ failing together
+in round $t$ give $s_t\le0.30$ and $\tau_t\le0.5\cdot0.30+0.5=0.65$,
+which flags the node, so the rate is also $\Omega(q^{3})$.
+For other parameters, $E$ and $T$ failing together in round $t$ give
+$s_t\le0.5$ and $\tau_t\le0.5\,\alpha+(1-\alpha)\,\tau_{t-1}$, where
+$\tau_{t-1}<1$ whenever some recent PDR was below $100\%$.  At
+$\theta=0.70$ and $\alpha=0.6$ this gives $\tau_t\le0.3+0.4\,\tau_{t-1}<0.70$,
+and at $\alpha=0.5$ and $\theta=0.75$ it gives
+$\tau_t\le0.25+0.5\,\tau_{t-1}<0.75$ (larger $\alpha$ or $\theta$ only
+lowers the margin); in both cases two failures in one round flag the
+node and the order is $\Theta(q^{2})$.
+
+\subsection{Persistence check}
+This subsection proves Proposition~\ref{prop:persist}.
+For one factor, $m$ failures among $w$ independent rounds have
+probability $\Pr[\mathrm{Bin}(w,q)\ge m]\le\binom{w}{m}q^{m}$; the union
+bound over four factors gives the first claim.  The second follows
+because each lie is a failure of that factor.  The check fires only
+when some window holds $m$ failures of one factor, so a liar that
+keeps at most $m-1$ lies in every window, and meets no congestion
+failure of the same factor, is never flagged by it; spacing lies
+evenly attains the rate $(m-1)/w$, and with two windows the smaller
+of the two budgets applies.
+
+\subsection{Tamper evidence}
+This subsection proves Theorem~\ref{thm:tamper}.
+The header commits to the counts and to RFC~6962 Merkle roots, whose
+leaf and interior hashes are domain-separated and whose shape is fixed
+by the leaf count; two different sequences of the same length
+therefore have different roots unless a hash collision occurs, and a
+change of length changes the committed count.  Every record has a fixed
+length that $V$ checks, so interior-node values cannot stand in for
+records.  Any modification, insertion, deletion or reordering in $B_i$
+thus changes a root or a count, and hence the header, unless a
+collision occurs.  The original endorsements cover the old header, so
+a header that is not re-signed fails verification; re-signing needs
+$k$ valid signatures, which an adversary with fewer than $k$ keys can
+produce only by forgery.  A modified vote likewise needs the signature
+of its replica, and a modified verdict that its votes do not support is
+rejected by the quorum check.  An adversary with $k$ keys can re-sign
+the votes of its replicas and the headers from $B_i$ onward and recompute
+all hashes, producing an internally consistent log; then $h_j$ changes
+for every $j\geq i$ and differs from a previously published
+$h^{\star}_j$ unless a collision occurs, while a checkpoint with
+$j<i$ is unaffected.
+

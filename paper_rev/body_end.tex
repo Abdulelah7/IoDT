@@ -1,0 +1,77 @@
+% ====================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% ====================================================================
+The IoDT model of~\cite{soula2024iodt} pairs every IoT node with a
+cloud-resident twin and decides trust from four interpretable factors.
+Its binary AND, single twin and mutable verdict store make it fragile
+under congestion, blind to a corrupted twin, and not tamper-evident.
+This paper kept the factor set and added three extensions: a weighted,
+EMA-smoothed score with a per-factor persistence check; quorum voting
+over signed vote vectors of replicated twins; and a signed Merkle
+audit log of verdicts and votes, endorsed by the replicas off the
+decision path.
+
+The evaluation compared the score with delay-matched baselines rather
+than with the AND alone, and the comparison changes the claim.  At the
+congestion levels implied by the original evaluation, any rule that
+needs two failures removes almost all false isolations, and a
+2-of-4 rule does so without delaying the detection of a naive liar.  Smoothing pays off as
+congestion grows and over long operation: at $4\%$ per-factor
+congestion Extension~I falsely isolated $1.1\%$ of honest nodes within
+16 rounds, against $14$--$26\%$ for the simple rules and $93\%$ for the
+AND, its mean time to a first false isolation was $110$ times longer
+than that of the better simple rule at $0.5\%$ congestion and $10$
+times longer at $4\%$, and with re-admission honest nodes spent
+$1.4\%$ of their time in quarantine at $4\%$,
+at the cost of one extra round of evidence.  An operator who knows
+that congestion is low can therefore use the simpler 2-of-4 rule; one
+who does not, or who expects congestion to vary, gains from
+smoothing.  On two public packet-delivery traces, Extension~I kept the
+lowest false isolation in every setting, but real losses, bursty and
+concentrated on a minority of nodes, raised it to $2.0$--$31\%$ within
+16 rounds, mostly on nodes with above-median loss.  When the replicas of a twin see identical evidence, a quorum rule
+kept detection at the level of an honest twin with up to two of five
+replicas corrupted, and missing or withheld votes caused no new
+isolation; with independent replica errors, framing replicas raise
+false isolation markedly.  The audit log rejected every edit by an
+adversary with fewer than $k$ replica keys, rejected interior-node
+substitutions and replayed votes even with $k$ keys, and exposed
+unsupported verdicts; its header size is independent of the number of
+nodes.
+
+The results are bounded by the limitations listed in
+Section~\ref{sec:discussion}: a rule-aware attacker keeps a lie budget
+of $37.5\%$ of rounds without congestion ($21.9\%$ with a second
+window), bad-mouthing through the notification factor is not covered,
+common-mode events need domain suppression, cross-factor events lower
+the order of the error from $\Theta(q^{3})$ to $\Theta(q^{2})$,
+voting relies on identical evidence, the fog relay is trusted, lossy
+nodes are falsely isolated often on real traces, and the evaluation
+simulates the trust logic with assumed timing and no deployed ledger.  Future work will
+(i)~replace fixed thresholds with sequential tests such as
+CUSUM~\cite{page1954continuous} whose parameters are randomised, to
+shrink the lie budget; (ii)~corroborate notification failures across
+several destinations against bad-mouthing; (iii)~calibrate thresholds to each node's own loss history so that
+a weak link is not taken for misbehaviour; (iv)~stack the behavioural
+score with a traffic-level detector such
+as~\cite{meidan2018nbaiot}; (v)~deploy the replicas and the log on a
+multi-domain fog testbed to measure $d_{\mathrm{rep}}$ and the append
+latency; and (vi)~couple the audit log with a SOAR
+platform~\cite{empl2022soar4iot} for automated response.
+
+\section*{Acknowledgment}
+The author thanks P.~Bodik, W.~Hong, C.~Guestrin, S.~Madden,
+M.~Paskin and R.~Thibaux for the Intel Lab data, and R.~Jacob,
+R.~Da~Forno, R.~Tr{\"u}b, A.~Biri and L.~Thiele for the FlockLab
+link-quality dataset.
+
+\section*{Data and Code Availability}
+The simulator, the experiment, table and figure scripts, the
+configuration of every run and all raw result files are provided as
+supplementary material with this submission and will be archived in a
+public repository with a persistent identifier.  The trace-driven
+experiments use the Intel Lab data~\cite{bodik2004intel}, reused with
+the acknowledgement its authors request (above), and the FlockLab link-quality
+dataset~\cite{jacob2019flocklab} (CC~BY~4.0); the pre-processing scripts
+and the exact files used are included.

@@ -1,0 +1,502 @@
+{
+ "experiment": "e4_audit",
+ "generated": "2026-10-11 06:12:57",
+ "rows": [
+  {
+   "K": 1,
+   "blocks": 30,
+   "onchain": 11045,
+   "offchain": 152028,
+   "max_block": 371,
+   "header_bytes": 152,
+   "block_bytes_first": 367,
+   "t_conf_rounds": 1,
+   "verify_clean": true,
+   "n_blocks": 30
+  },
+  {
+   "K": 5,
+   "blocks": 6,
+   "onchain": 2205,
+   "offchain": 120834,
+   "max_block": 370,
+   "header_bytes": 152,
+   "block_bytes_first": 370,
+   "t_conf_rounds": 5,
+   "verify_clean": true,
+   "n_blocks": 6
+  },
+  {
+   "K": 10,
+   "blocks": 3,
+   "onchain": 1107,
+   "offchain": 116932,
+   "max_block": 369,
+   "header_bytes": 152,
+   "block_bytes_first": 369,
+   "t_conf_rounds": 10,
+   "verify_clean": true,
+   "n_blocks": 3
+  },
+  {
+   "K": 20,
+   "blocks": 2,
+   "onchain": 734,
+   "offchain": 115620,
+   "max_block": 367,
+   "header_bytes": 152,
+   "block_bytes_first": 367,
+   "t_conf_rounds": 20,
+   "verify_clean": true,
+   "n_blocks": 2
+  }
+ ],
+ "tamper": [
+  {
+   "K": 1,
+   "kind": "verdict",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "verdict",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "verdict",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "verdict",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.16666666666666666,
+   "det_latest": 1.0,
+   "det_older": 0.1724137931034483
+  },
+  {
+   "K": 1,
+   "kind": "tau",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "tau",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "tau",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "tau",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 1,
+   "kind": "state",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "state",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "state",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "state",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 1,
+   "kind": "vote",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "vote",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "vote",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "vote",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 1,
+   "kind": "interior",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "interior",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "duplicate",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "duplicate",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "truncate",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "truncate",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 1,
+   "kind": "replay",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 1,
+   "kind": "replay",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "verdict",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "verdict",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "verdict",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "verdict",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.1,
+   "det_latest": 1.0,
+   "det_older": 0.1
+  },
+  {
+   "K": 10,
+   "kind": "tau",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "tau",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "tau",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "tau",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 10,
+   "kind": "state",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "state",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "state",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "state",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 10,
+   "kind": "vote",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "vote",
+   "adversary": "recompute",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "vote",
+   "adversary": "k-1_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "vote",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 0.0,
+   "det_latest": 1.0,
+   "det_older": 0.0
+  },
+  {
+   "K": 10,
+   "kind": "interior",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "interior",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "duplicate",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "duplicate",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "truncate",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "truncate",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "replay",
+   "adversary": "edit_only",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  },
+  {
+   "K": 10,
+   "kind": "replay",
+   "adversary": "k_keys",
+   "trials": 30,
+   "det_none": 1.0,
+   "det_latest": 1.0,
+   "det_older": 1.0
+  }
+ ],
+ "legacy": {
+  "interior_same_root_legacy": true,
+  "duplicate_same_root_legacy": true,
+  "interior_same_root_rfc6962": false,
+  "duplicate_same_root_rfc6962": false
+ },
+ "engine_equivocation_committed": 0,
+ "engine_equivocation_trials": 30,
+ "sizes": {
+  "event": 29,
+  "state": 13,
+  "header": 152,
+  "vote_header": 11
+ }
+}
